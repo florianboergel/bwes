@@ -1,3 +1,3 @@
-Excercises and Metods
-=======================
+Excercises and Methods
+============================
 Timeseries data

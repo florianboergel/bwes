@@ -1,7 +1,8 @@
-# Introduction
-
+Lecture 1 
+============================
+## Introduction
 > Lecturer: Prof. Dr. Markus Meier
-> 
+
 Professor in physical oceanography at the Leibniz Institute for Baltic Sea Research Warnemünde (IOW) and Rostock University
 
 ## General information
@@ -14,7 +15,7 @@ August, on Askö, Sweden)
 at IOW in Warnemünde), part of the master in physics
 at Rostock University
 
-vist [Baltic Earth](www.baltic.earth) for more information
+visit [Baltic Earth](https://www.baltic.earth) for more information
 
 ## The Baltic Sea region 
 
