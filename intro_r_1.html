@@ -1,0 +1,1718 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction into R - Part 1 &#8212; Baltic Earth Winter School</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction into R - Part 2" href="intro_r_2.html" />
+    <link rel="prev" title="Content in Jupyter Book" href="content.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo_baltic_earth.jpg" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Baltic Earth Winter School</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Intro
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="content.html">
+   Content in Jupyter Book
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Introduction into R - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_r_2.html">
+     Introduction into R - Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="statistical_tests.html">
+     Statistical tests in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Wavelet_lecture.html">
+     Introduction to wavelet analysis
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/intro_r_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro_r_1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/intro_r_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#outline">
+   Outline
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variables-and-their-data-types">
+   1. Variables and their data types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vectors-lists-and-data-frames">
+   2. Vectors, lists and data.frames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectors">
+     2.1 Vectors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-frames">
+     2.2 data.frames
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-and-writing-data-textfiles">
+   3. Reading and writing data (textfiles)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-simple-plots">
+   4. Creating simple plots
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-apply-and-aggregate">
+   5. Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     apply()
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     aggregate()
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loops-and-if-clauses">
+   6. Loops and if-clauses
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-your-own-functions">
+   7. Writing your own functions
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction-into-r-part-1">
+<h1>Introduction into R - Part 1<a class="headerlink" href="#introduction-into-r-part-1" title="Permalink to this headline">¶</a></h1>
+<p>This is part 1/2 of the introduction into R that is given for the Baltic Earth Winter School (BEWS). Feel free to share and distribute it.</p>
+<div class="section" id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
+<p>Part 1 of the introduction teaches some basic functionality of R.</p>
+<ul class="simple">
+<li><p>Variables and their data types</p></li>
+<li><p>Vectors and data.frames</p></li>
+<li><p>Reading and writing data (textfiles)</p></li>
+<li><p>Creating simple plots</p></li>
+<li><p>Using “apply” and “aggregate”</p></li>
+<li><p>Loops and if-clauses</p></li>
+<li><p>Writing your own functions</p></li>
+</ul>
+<p>Part 2 of the introduction teaches some R features specific to the analysis of time series and spatial data.</p>
+<ul class="simple">
+<li><p>Data formats for storing time information</p></li>
+<li><p>Simple linear models (regression)</p></li>
+<li><p>Lists vs Vectors</p></li>
+<li><p>Working with NetCDF data</p></li>
+<li><p>Plotting simple maps</p></li>
+<li><p>Basic statistical tests</p></li>
+</ul>
+</div>
+<div class="section" id="variables-and-their-data-types">
+<h2>1. Variables and their data types<a class="headerlink" href="#variables-and-their-data-types" title="Permalink to this headline">¶</a></h2>
+<p>Variables will be created in R just by assigning them a value. There are two operators for this: <code class="docutils literal notranslate"><span class="pre">=</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;-</span></code> which represents an arrow to the left.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="m">3</span>
+<span class="n">b</span> <span class="o">&lt;-</span> <span class="m">4</span>    <span class="c1"># this does the same</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Access the values of a and b by just typing them. Alternatively, use the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function to access their value</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">3</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">4</div></div>
+</div>
+<img src="https://i0.wp.com/pythagoras.nu/wp-content/uploads/2019/03/pythagoras-theorem.png?resize=480%2C352&ssl=1" width=200>
+<span style="color: red;">Task: </span> a and b are the shorter sides of a right-angled triangle. Calculate the longer side c using the `sqrt()` function.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">b</span><span class="o">^</span><span class="m">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">5</div></div>
+</div>
+<p>To see which variables are defined, do a right-click to a code cell and click “open vaiable inspector”. You can click at the tab of the variable inspector and move it to the very right of your screen, so it will show up in a separate column.</p>
+<p>You see that a and b are of type “numeric”. Let’s see if we can create some other types.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sentence</span> <span class="o">=</span> <span class="s">&quot;I like hamsters.&quot;</span>
+<span class="n">truth</span> <span class="o">=</span> <span class="kc">TRUE</span>
+<span class="n">lie</span> <span class="o">=</span> <span class="kc">FALSE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">class()</span></code> function to check which data type a variable has.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">class</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">'character'</div></div>
+</div>
+<p>We can convert variables to other types by using functions starting with <code class="docutils literal notranslate"><span class="pre">as.</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="kc">pi</span>
+<span class="nf">as.character</span><span class="p">(</span><span class="kc">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">3.14159265358979</div><div class="output text_html">'3.14159265358979'</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">truth</span><span class="p">)</span>
+<span class="nf">as.numeric</span><span class="p">(</span><span class="n">lie</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">1</div><div class="output text_html">0</div></div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">ls()</span></code> function to see which variables exist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ls</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>'a'</li>
+	<li>'b'</li>
+	<li>'lie'</li>
+	<li>'sentence'</li>
+	<li>'truth'</li>
+</ol>
+</div></div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">rm()</span></code> function to delete a variable (we can pass the variable, its name, or a list of names).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">rm</span><span class="p">(</span><span class="n">truth</span><span class="p">)</span>
+<span class="nf">rm</span><span class="p">(</span><span class="s">&quot;lie&quot;</span><span class="p">)</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Delete all existing variables using a single command.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">ls</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="vectors-lists-and-data-frames">
+<h2>2. Vectors, lists and data.frames<a class="headerlink" href="#vectors-lists-and-data-frames" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vectors">
+<h3>2.1 Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h3>
+<p>If you have several values, it makes sense to store them in a vector. The default option to create a vector is using the <code class="docutils literal notranslate"><span class="pre">c()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">vec1</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">vec1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 1 2 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>But there are several ways of creating a vector. You can for example repeat something, or create a sequence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">vec2</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="s">&quot;abc&quot;</span><span class="p">,</span> <span class="m">100</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">vec2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  [1] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;
+ [13] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;
+ [25] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;
+ [37] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;
+ [49] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;
+ [61] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;
+ [73] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;
+ [85] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;
+ [97] &quot;abc&quot; &quot;abc&quot; &quot;abc&quot; &quot;abc&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">vec3</span> <span class="o">=</span> <span class="m">4</span><span class="o">:</span><span class="m">10</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">vec3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1]  4  5  6  7  8  9 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">vec4</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="m">10</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="m">20</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">vec4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  [1] 10.0 10.1 10.2 10.3 10.4 10.5 10.6 10.7 10.8 10.9 11.0 11.1 11.2 11.3 11.4
+ [16] 11.5 11.6 11.7 11.8 11.9 12.0 12.1 12.2 12.3 12.4 12.5 12.6 12.7 12.8 12.9
+ [31] 13.0 13.1 13.2 13.3 13.4 13.5 13.6 13.7 13.8 13.9 14.0 14.1 14.2 14.3 14.4
+ [46] 14.5 14.6 14.7 14.8 14.9 15.0 15.1 15.2 15.3 15.4 15.5 15.6 15.7 15.8 15.9
+ [61] 16.0 16.1 16.2 16.3 16.4 16.5 16.6 16.7 16.8 16.9 17.0 17.1 17.2 17.3 17.4
+ [76] 17.5 17.6 17.7 17.8 17.9 18.0 18.1 18.2 18.3 18.4 18.5 18.6 18.7 18.8 18.9
+ [91] 19.0 19.1 19.2 19.3 19.4 19.5 19.6 19.7 19.8 19.9 20.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>How do you know which arguments to pass to a function, e.g. the <code class="docutils literal notranslate"><span class="pre">seq()</span></code> function? You can find that out in two ways.</p>
+<p>(a) After writing <code class="docutils literal notranslate"><span class="pre">seq(</span></code> you can press the TAB key to see which arguments are possible.
+(b) Type a question mark in front of the function name (<code class="docutils literal notranslate"><span class="pre">?seq</span></code>) to show help on that function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">?</span><span class="n">seq</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Use the <code class="docutils literal notranslate"><span class="pre">seq()</span></code> function to create a sequence from 0 to 100 that has 7 elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">seq</span><span class="p">(</span><span class="n">from</span> <span class="o">=</span> <span class="m">0</span><span class="p">,</span> <span class="n">to</span> <span class="o">=</span><span class="m">100</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span> <span class="p">(</span><span class="m">100</span><span class="o">/</span><span class="m">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>0</li>
+	<li>16.6666666666667</li>
+	<li>33.3333333333333</li>
+	<li>50</li>
+	<li>66.6666666666667</li>
+	<li>83.3333333333333</li>
+	<li>100</li>
+</ol>
+</div></div>
+</div>
+<p><span style="color: red;">Task: </span> Create a vector that contains the letters</p>
+<p>“a”, “b”, “c”, “d”.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">rep()</span></code> function to transform it into</p>
+<p>“a”, “a”, “b”, “b”, “c”, “c”, “d”, “d”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="kc">letters</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">)</span>
+<span class="kc">letters</span>
+<span class="nf">rep</span><span class="p">(</span><span class="kc">letters</span><span class="p">,</span><span class="n">each</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>'a'</li>
+	<li>'b'</li>
+	<li>'c'</li>
+	<li>'d'</li>
+</ol>
+</div><div class="output text_html"><ol class=list-inline>
+	<li>'a'</li>
+	<li>'a'</li>
+	<li>'b'</li>
+	<li>'b'</li>
+	<li>'c'</li>
+	<li>'c'</li>
+	<li>'d'</li>
+	<li>'d'</li>
+</ol>
+</div></div>
+</div>
+<p>We can access elements of vectors using square brackets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mynumbers</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
+<span class="n">mynumbers</span><span class="p">[</span><span class="m">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2</div></div>
+</div>
+<p>We can not only use one index but also a vector of indexes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mynumbers</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>1</li>
+	<li>8</li>
+	<li>2</li>
+</ol>
+</div></div>
+</div>
+<p>This makes sense for showing the first few elements, or for selecting elements that fulfill a specific condition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mynumbers</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>1</li>
+	<li>4</li>
+	<li>1</li>
+	<li>8</li>
+	<li>2</li>
+</ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mynumbers</span><span class="p">[</span><span class="n">mynumbers</span><span class="o">&gt;</span><span class="m">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>8</li>
+	<li>7</li>
+</ol>
+</div></div>
+</div>
+<p>We can calculate with vectors as we would do with numbers. The operations will be performed element by element. (This is in contrast to Matlab!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mynumbers</span><span class="m">+100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>101</li>
+	<li>104</li>
+	<li>101</li>
+	<li>108</li>
+	<li>102</li>
+	<li>105</li>
+	<li>107</li>
+	<li>101</li>
+	<li>104</li>
+</ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mynumbers</span><span class="o">^</span><span class="m">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>1</li>
+	<li>64</li>
+	<li>1</li>
+	<li>512</li>
+	<li>8</li>
+	<li>125</li>
+	<li>343</li>
+	<li>1</li>
+	<li>64</li>
+</ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sqrt</span><span class="p">(</span><span class="n">mynumbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>1</li>
+	<li>2</li>
+	<li>1</li>
+	<li>2.82842712474619</li>
+	<li>1.4142135623731</li>
+	<li>2.23606797749979</li>
+	<li>2.64575131106459</li>
+	<li>1</li>
+	<li>2</li>
+</ol>
+</div></div>
+</div>
+<p>We can also use two vectors of the same length for calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nine_numbers</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
+<span class="n">mynumbers</span> <span class="o">*</span> <span class="n">nine_numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>0</li>
+	<li>0</li>
+	<li>1</li>
+	<li>8</li>
+	<li>0</li>
+	<li>0</li>
+	<li>7</li>
+	<li>1</li>
+	<li>0</li>
+</ol>
+</div></div>
+</div>
+<p>But adding different length also works - which <strong>can make life very difficult!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">three_numbers</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">1000</span><span class="p">)</span>
+<span class="n">mynumbers</span> <span class="o">+</span> <span class="n">three_numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>11</li>
+	<li>104</li>
+	<li>1001</li>
+	<li>18</li>
+	<li>102</li>
+	<li>1005</li>
+	<li>17</li>
+	<li>101</li>
+	<li>1004</li>
+</ol>
+</div></div>
+</div>
+<p><strong>R just repeats the shorter vector to get the required length!</strong> (You may not like that.) At least it gives a warning if it really doesn’t match.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">two_numbers</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">200</span><span class="p">)</span>
+<span class="n">mynumbers</span> <span class="o">+</span> <span class="n">two_numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message in mynumbers + two_numbers:
+&quot;longer object length is not a multiple of shorter object length&quot;
+</pre></div>
+</div>
+<div class="output text_html"><ol class=list-inline>
+	<li>101</li>
+	<li>204</li>
+	<li>101</li>
+	<li>208</li>
+	<li>102</li>
+	<li>205</li>
+	<li>107</li>
+	<li>201</li>
+	<li>104</li>
+</ol>
+</div></div>
+</div>
+<p><span style="color: red;">Task: </span> Create a time axis <code class="docutils literal notranslate"><span class="pre">t</span></code> as a vector from 0 to 10 with a time step of 0.1. Then create a time series <code class="docutils literal notranslate"><span class="pre">myseries</span></code> using the <code class="docutils literal notranslate"><span class="pre">sin()</span></code> function. Use the command <code class="docutils literal notranslate"><span class="pre">plot(t,myseries)</span></code> to plot it.</p>
+<p><span style="color: red;">Bonus Task: </span> Create a series that has a period length of 5, so we have exactly two periods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="m">0</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span> <span class="m">10</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span>
+<span class="n">t</span>
+<span class="n">myseries</span><span class="o">=</span><span class="nf">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">myseries</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">myseries</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>0</li>
+	<li>0.1</li>
+	<li>0.2</li>
+	<li>0.3</li>
+	<li>0.4</li>
+	<li>0.5</li>
+	<li>0.6</li>
+	<li>0.7</li>
+	<li>0.8</li>
+	<li>0.9</li>
+	<li>1</li>
+	<li>1.1</li>
+	<li>1.2</li>
+	<li>1.3</li>
+	<li>1.4</li>
+	<li>1.5</li>
+	<li>1.6</li>
+	<li>1.7</li>
+	<li>1.8</li>
+	<li>1.9</li>
+	<li>2</li>
+	<li>2.1</li>
+	<li>2.2</li>
+	<li>2.3</li>
+	<li>2.4</li>
+	<li>2.5</li>
+	<li>2.6</li>
+	<li>2.7</li>
+	<li>2.8</li>
+	<li>2.9</li>
+	<li>3</li>
+	<li>3.1</li>
+	<li>3.2</li>
+	<li>3.3</li>
+	<li>3.4</li>
+	<li>3.5</li>
+	<li>3.6</li>
+	<li>3.7</li>
+	<li>3.8</li>
+	<li>3.9</li>
+	<li>4</li>
+	<li>4.1</li>
+	<li>4.2</li>
+	<li>4.3</li>
+	<li>4.4</li>
+	<li>4.5</li>
+	<li>4.6</li>
+	<li>4.7</li>
+	<li>4.8</li>
+	<li>4.9</li>
+	<li>5</li>
+	<li>5.1</li>
+	<li>5.2</li>
+	<li>5.3</li>
+	<li>5.4</li>
+	<li>5.5</li>
+	<li>5.6</li>
+	<li>5.7</li>
+	<li>5.8</li>
+	<li>5.9</li>
+	<li>6</li>
+	<li>6.1</li>
+	<li>6.2</li>
+	<li>6.3</li>
+	<li>6.4</li>
+	<li>6.5</li>
+	<li>6.6</li>
+	<li>6.7</li>
+	<li>6.8</li>
+	<li>6.9</li>
+	<li>7</li>
+	<li>7.1</li>
+	<li>7.2</li>
+	<li>7.3</li>
+	<li>7.4</li>
+	<li>7.5</li>
+	<li>7.6</li>
+	<li>7.7</li>
+	<li>7.8</li>
+	<li>7.9</li>
+	<li>8</li>
+	<li>8.1</li>
+	<li>8.2</li>
+	<li>8.3</li>
+	<li>8.4</li>
+	<li>8.5</li>
+	<li>8.6</li>
+	<li>8.7</li>
+	<li>8.8</li>
+	<li>8.9</li>
+	<li>9</li>
+	<li>9.1</li>
+	<li>9.2</li>
+	<li>9.3</li>
+	<li>9.4</li>
+	<li>9.5</li>
+	<li>9.6</li>
+	<li>9.7</li>
+	<li>9.8</li>
+	<li>9.9</li>
+	<li>10</li>
+</ol>
+</div><div class="output text_html"><ol class=list-inline>
+	<li>0</li>
+	<li>0.0998334166468282</li>
+	<li>0.198669330795061</li>
+	<li>0.29552020666134</li>
+	<li>0.389418342308651</li>
+	<li>0.479425538604203</li>
+	<li>0.564642473395035</li>
+	<li>0.644217687237691</li>
+	<li>0.717356090899523</li>
+	<li>0.783326909627483</li>
+	<li>0.841470984807897</li>
+	<li>0.891207360061435</li>
+	<li>0.932039085967226</li>
+	<li>0.963558185417193</li>
+	<li>0.98544972998846</li>
+	<li>0.997494986604054</li>
+	<li>0.999573603041505</li>
+	<li>0.991664810452469</li>
+	<li>0.973847630878195</li>
+	<li>0.946300087687414</li>
+	<li>0.909297426825682</li>
+	<li>0.863209366648874</li>
+	<li>0.80849640381959</li>
+	<li>0.74570521217672</li>
+	<li>0.675463180551151</li>
+	<li>0.598472144103957</li>
+	<li>0.515501371821464</li>
+	<li>0.42737988023383</li>
+	<li>0.334988150155905</li>
+	<li>0.239249329213982</li>
+	<li>0.141120008059867</li>
+	<li>0.0415806624332905</li>
+	<li>-0.0583741434275801</li>
+	<li>-0.157745694143249</li>
+	<li>-0.255541102026832</li>
+	<li>-0.35078322768962</li>
+	<li>-0.442520443294852</li>
+	<li>-0.529836140908493</li>
+	<li>-0.611857890942719</li>
+	<li>-0.687766159183974</li>
+	<li>-0.756802495307928</li>
+	<li>-0.818277111064411</li>
+	<li>-0.871575772413588</li>
+	<li>-0.916165936749455</li>
+	<li>-0.951602073889516</li>
+	<li>-0.977530117665097</li>
+	<li>-0.993691003633465</li>
+	<li>-0.999923257564101</li>
+	<li>-0.996164608835841</li>
+	<li>-0.982452612624332</li>
+	<li>-0.958924274663138</li>
+	<li>-0.925814682327732</li>
+	<li>-0.883454655720153</li>
+	<li>-0.832267442223901</li>
+	<li>-0.772764487555987</li>
+	<li>-0.705540325570392</li>
+	<li>-0.631266637872321</li>
+	<li>-0.550685542597638</li>
+	<li>-0.464602179413757</li>
+	<li>-0.373876664830236</li>
+	<li>-0.279415498198926</li>
+	<li>-0.182162504272095</li>
+	<li>-0.0830894028174964</li>
+	<li>0.0168139004843506</li>
+	<li>0.116549204850494</li>
+	<li>0.215119988087816</li>
+	<li>0.311541363513379</li>
+	<li>0.404849920616598</li>
+	<li>0.494113351138609</li>
+	<li>0.5784397643882</li>
+	<li>0.656986598718789</li>
+	<li>0.728969040125876</li>
+	<li>0.793667863849153</li>
+	<li>0.850436620628565</li>
+	<li>0.898708095811627</li>
+	<li>0.937999976774739</li>
+	<li>0.967919672031487</li>
+	<li>0.988168233877</li>
+	<li>0.998543345374605</li>
+	<li>0.998941341839772</li>
+	<li>0.989358246623382</li>
+	<li>0.969889810845086</li>
+	<li>0.940730556679773</li>
+	<li>0.902171833756293</li>
+	<li>0.85459890808828</li>
+	<li>0.79848711262349</li>
+	<li>0.734397097874113</li>
+	<li>0.662969230082182</li>
+	<li>0.584917192891762</li>
+	<li>0.501020856457885</li>
+	<li>0.412118485241757</li>
+	<li>0.319098362349352</li>
+	<li>0.222889914100246</li>
+	<li>0.124454423507062</li>
+	<li>0.0247754254533578</li>
+	<li>-0.0751511204618093</li>
+	<li>-0.174326781222981</li>
+	<li>-0.271760626410944</li>
+	<li>-0.366479129251928</li>
+	<li>-0.457535893775321</li>
+	<li>-0.54402111088937</li>
+</ol>
+</div><img alt="_images/intro_r_1_51_2.png" src="_images/intro_r_1_51_2.png" />
+</div>
+</div>
+<p><span style="color: red;">Bonus Task: </span> Define a vector n from 1 to 10 and calculate</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{\sqrt{5}} \left( \left( \frac{1+\sqrt{5} }{2} \right)^n - \left( \frac{1-\sqrt{5}}{2} \right)^n \right)\]</div>
+<p>What numbers do you get?</p>
+</div>
+<div class="section" id="data-frames">
+<h3>2.2 data.frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">¶</a></h3>
+<p>A data.frame is a very common data structure for storing data in R: A table of several vectors of the same length.</p>
+<p>Each row is a different object. Each column is a different property. Let us create an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">participants</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">name</span>       <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Anna&quot;</span><span class="p">,</span> <span class="s">&quot;Boris&quot;</span><span class="p">,</span> <span class="s">&quot;Christina&quot;</span><span class="p">,</span> <span class="s">&quot;David&quot;</span><span class="p">),</span>
+                          <span class="n">surname</span>    <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Meier&quot;</span><span class="p">,</span> <span class="s">&quot;Smirnov&quot;</span><span class="p">,</span> <span class="s">&quot;Rabe&quot;</span><span class="p">,</span> <span class="s">&quot;Potter&quot;</span><span class="p">),</span>
+                          <span class="n">age</span>        <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">23</span><span class="p">,</span> <span class="m">25</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="m">24</span><span class="p">),</span>
+                          <span class="n">is.student</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="kc">TRUE</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">),</span>
+                          <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>(We will talk about stringsAsFactors later.)</p>
+<p>Now print the data.frame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">participants</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>name</th><th scope=col>surname</th><th scope=col>age</th><th scope=col>is.student</th></tr></thead>
+<tbody>
+	<tr><td>Anna     </td><td>Meier    </td><td>23       </td><td> TRUE    </td></tr>
+	<tr><td>Boris    </td><td>Smirnov  </td><td>25       </td><td> TRUE    </td></tr>
+	<tr><td>Christina</td><td>Rabe     </td><td>30       </td><td>FALSE    </td></tr>
+	<tr><td>David    </td><td>Potter   </td><td>24       </td><td> TRUE    </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="n">participants</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       name surname age is.student
+1      Anna   Meier  23       TRUE
+2     Boris Smirnov  25       TRUE
+3 Christina    Rabe  30      FALSE
+4     David  Potter  24       TRUE
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are a lot of ways to access data in a data.frame. For example, we can address the columns by their name using the dollar symbol. This gives us vectors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">participants</span><span class="o">$</span><span class="n">age</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>23</li>
+	<li>25</li>
+	<li>30</li>
+	<li>24</li>
+</ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">participants</span><span class="o">$</span><span class="n">age</span><span class="p">[</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">30</div></div>
+</div>
+<p>We can add new columns by just providing data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">participants</span><span class="o">$</span><span class="n">arrived</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="kc">FALSE</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">participants</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>name</th><th scope=col>surname</th><th scope=col>age</th><th scope=col>is.student</th><th scope=col>arrived</th></tr></thead>
+<tbody>
+	<tr><td>Anna     </td><td>Meier    </td><td>23       </td><td> TRUE    </td><td>FALSE    </td></tr>
+	<tr><td>Boris    </td><td>Smirnov  </td><td>25       </td><td> TRUE    </td><td> TRUE    </td></tr>
+	<tr><td>Christina</td><td>Rabe     </td><td>30       </td><td>FALSE    </td><td> TRUE    </td></tr>
+	<tr><td>David    </td><td>Potter   </td><td>24       </td><td> TRUE    </td><td>FALSE    </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p><span style="color: red;">Task: </span> David Potter showed up a bit later. Change the data accordingy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">participants</span><span class="o">$</span><span class="n">arrived</span><span class="p">[</span><span class="m">4</span><span class="p">]</span><span class="o">=</span><span class="kc">TRUE</span>
+<span class="n">participants</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>name</th><th scope=col>surname</th><th scope=col>age</th><th scope=col>is.student</th><th scope=col>arrived</th></tr></thead>
+<tbody>
+	<tr><td>Anna     </td><td>Meier    </td><td>23       </td><td> TRUE    </td><td>FALSE    </td></tr>
+	<tr><td>Boris    </td><td>Smirnov  </td><td>25       </td><td> TRUE    </td><td> TRUE    </td></tr>
+	<tr><td>Christina</td><td>Rabe     </td><td>30       </td><td>FALSE    </td><td> TRUE    </td></tr>
+	<tr><td>David    </td><td>Potter   </td><td>24       </td><td> TRUE    </td><td> TRUE    </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Let us calculate the mean age of all participants that have arrived.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">participants</span><span class="o">$</span><span class="n">age</span><span class="p">[</span><span class="n">participants</span><span class="o">$</span><span class="n">arrived</span> <span class="o">==</span> <span class="kc">TRUE</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">26.3333333333333</div></div>
+</div>
+<p><span style="color: red;">Task: </span> Calculate the mean age of all students that have arrived. You can connect logical expressions using <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> as the AND operator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">participants</span><span class="o">$</span><span class="n">age</span><span class="p">[</span><span class="n">participants</span><span class="o">$</span><span class="n">arrived</span> <span class="o">==</span> <span class="kc">TRUE</span> <span class="o">&amp;</span> <span class="n">participants</span><span class="o">$</span><span class="n">is.student</span> <span class="o">==</span> <span class="kc">TRUE</span><span class="p">])</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">participants</span><span class="o">$</span><span class="n">age</span><span class="p">[</span><span class="n">participants</span><span class="o">$</span><span class="n">arrived</span> <span class="o">&amp;</span> <span class="n">participants</span><span class="o">$</span><span class="n">is.student</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">24.5</div><div class="output text_html">24.5</div></div>
+</div>
+<p>Another option is to access the data by row and column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">participants</span><span class="p">[</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">'Potter'</div></div>
+</div>
+<p>Again you can use the names instead of the indexes. Leaving an index empty means “select all”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">participants</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">4</span><span class="p">),</span><span class="s">&quot;surname&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>'Meier'</li>
+	<li>'Potter'</li>
+</ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">participants</span><span class="p">[,</span><span class="s">&quot;surname&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>'Meier'</li>
+	<li>'Smirnov'</li>
+	<li>'Rabe'</li>
+	<li>'Potter'</li>
+</ol>
+</div></div>
+</div>
+<p><span style="color: red;">Task: </span> Get name, surname and age of all students only.</p>
+<p><span style="color: red;">Bonus Task: </span> Find out what the function <code class="docutils literal notranslate"><span class="pre">order()</span></code> does and sort the list by their age.</p>
+</div>
+</div>
+<div class="section" id="reading-and-writing-data-textfiles">
+<h2>3. Reading and writing data (textfiles)<a class="headerlink" href="#reading-and-writing-data-textfiles" title="Permalink to this headline">¶</a></h2>
+<p>Now we would like to work on a real dataset. Let us take a sea level dataset that was downloaded from the Permanent Service for Mean Sea Level webpage (<a class="reference external" href="https://www.psmsl.org">https://www.psmsl.org</a>). But before we can start doing so, we must ensure that we are working in the correct folder.</p>
+<p>The following command prints the folder we are working in:<span style="color: red;">Task: </span> Open the file warnemuende.txt and see how the file is structured. Read it in by using the function <code class="docutils literal notranslate"><span class="pre">read.csv2(...)</span></code> and find out which arguments to pass to the function so it reads the file correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">getwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">'/students_files/jkaiser'</div></div>
+</div>
+<p>If this is not your personal folder, change it by putting the correct directory name here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#setwd(&quot;/students_files/jkaiser&quot;)   # put in your surname here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Open the file warnemuende.txt and see how the file is structured. Read it in by using the function <code class="docutils literal notranslate"><span class="pre">sealevel</span> <span class="pre">=</span> <span class="pre">read.csv2(...)</span></code> and find out which arguments to pass to the function so it reads the file correctly. Always use the <code class="docutils literal notranslate"><span class="pre">stringsAsFactors=FALSE</span></code> argument unless you know what you are doing and need to speed up the calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sealevel</span><span class="o">=</span><span class="nf">read.csv2</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">&quot;warnemuende.txt&quot;</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">stringsAsFactors</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After loading it is good to check whether all data have the format we expect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">str</span><span class="p">(</span><span class="n">sealevel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	1977 obs. of  4 variables:
+ $ decimalyear  : chr  &quot;  1855.2917&quot; &quot;  1855.3750&quot; &quot;  1855.4583&quot; &quot;  1855.5417&quot; ...
+ $ sealevel     : int  6893 6928 6843 6926 7004 6993 6978 6882 6870 6950 ...
+ $ missingdays  : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ attentionflag: int  0 0 0 0 0 0 0 0 0 0 ...
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that sealevel, missingdays and attentionflag are integer values. But decimalyear is character. We need to convert it to numeric.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sealevel</span><span class="o">$</span><span class="n">decimalyear</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">sealevel</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">)</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">sealevel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	1977 obs. of  4 variables:
+ $ decimalyear  : num  1855 1855 1855 1856 1856 ...
+ $ sealevel     : int  6893 6928 6843 6926 7004 6993 6978 6882 6870 6950 ...
+ $ missingdays  : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ attentionflag: int  0 0 0 0 0 0 0 0 0 0 ...
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are two functions to quickly see what is inside a data.frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">sealevel</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">sealevel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>decimalyear</th><th scope=col>sealevel</th><th scope=col>missingdays</th><th scope=col>attentionflag</th></tr></thead>
+<tbody>
+	<tr><td>1855.292</td><td>6893    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.375</td><td>6928    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.458</td><td>6843    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.542</td><td>6926    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.625</td><td>7004    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.708</td><td>6993    </td><td>0       </td><td>0       </td></tr>
+</tbody>
+</table>
+</div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  decimalyear      sealevel       missingdays attentionflag
+ Min.   :1855   Min.   :-99999   Min.   :0    Min.   :0    
+ 1st Qu.:1896   1st Qu.:  6936   1st Qu.:0    1st Qu.:0    
+ Median :1938   Median :  7015   Median :0    Median :0    
+ Mean   :1938   Mean   :  6903   Mean   :0    Mean   :0    
+ 3rd Qu.:1979   3rd Qu.:  7085   3rd Qu.:0    3rd Qu.:0    
+ Max.   :2020   Max.   :  7366   Max.   :0    Max.   :0    
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Find out what might be wrong with the data!</p>
+<p>But it is mostly good to also do a plot and we may see more.</p>
+</div>
+<div class="section" id="creating-simple-plots">
+<h2>4. Creating simple plots<a class="headerlink" href="#creating-simple-plots" title="Permalink to this headline">¶</a></h2>
+<p>There are two typical ways to do plots in R:</p>
+<p>(a) Using the basic functions</p>
+<p>(b) Using the more fancy <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> package.</p>
+<p>We will show both possibilities. Let us start with the first one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">sealevel</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">sealevel</span><span class="o">$</span><span class="n">sealevel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Okay we have a missing value obviously, and it has no attention flag! That’s bad.</p>
+<p><span style="color: red;">Task: </span> Change the bad value to <code class="docutils literal notranslate"><span class="pre">NA</span></code> which is the R expression for missing data!</p>
+<p>Okay that is nice but we may prefer a line so we see more.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">sealevel</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span><span class="n">sealevel</span><span class="o">$</span><span class="n">sealevel</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Change the x axis description to “year” and the y axis description to “relative sea level (mm)”</p>
+<p>Another nice basic plotting function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">sealevel</span><span class="o">$</span><span class="n">sealevel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For more fancy options it makes sense to use the <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code> package.</p>
+<p>You can install packages to R that include functionality. Mostly this is very simple by typing</p>
+<p><code class="docutils literal notranslate"><span class="pre">install.packages(&quot;my_desired_package&quot;)</span></code></p>
+<p>but please do not do this here on the server. We have a lot of packages already installed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us load the graphics package <code class="docutils literal notranslate"><span class="pre">ggplot2</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>also installing the dependencies &#39;lattice&#39;, &#39;colorspace&#39;, &#39;nlme&#39;, &#39;Matrix&#39;, &#39;farver&#39;, &#39;labeling&#39;, &#39;munsell&#39;, &#39;R6&#39;, &#39;RColorBrewer&#39;, &#39;viridisLite&#39;, &#39;magrittr&#39;, &#39;pkgconfig&#39;, &#39;gtable&#39;, &#39;isoband&#39;, &#39;MASS&#39;, &#39;mgcv&#39;, &#39;scales&#39;, &#39;tibble&#39;, &#39;withr&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The philosophy is to define a plot that is based on a data.frame, and then “add” elements to it.
+So our simple plot looks like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">sealevel</span><span class="p">)</span> <span class="o">+</span> <span class="nf">geom_path</span><span class="p">(</span><span class="n">mapping</span> <span class="o">=</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">sealevel</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">aes()</span></code> maps the column names in the data.frame (decimalyear, sealevel) to the input parameters of the plot element, in this case <code class="docutils literal notranslate"><span class="pre">geom_path</span></code>.</p>
+<p>We can add a trendline and modify the y axis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">sealevel</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="nf">geom_path</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">sealevel</span><span class="p">))</span> <span class="o">+</span> 
+  <span class="nf">geom_smooth</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">sealevel</span><span class="p">),</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;relative sea level (mm)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And let’s save the plot to a png file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">png</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s">&quot;testplot.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="m">150</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s">&quot;px&quot;</span><span class="p">)</span>
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">sealevel</span><span class="p">)</span> <span class="o">+</span> 
+  <span class="nf">geom_path</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">sealevel</span><span class="p">))</span> <span class="o">+</span> 
+  <span class="nf">geom_smooth</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">sealevel</span><span class="p">),</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">)</span> <span class="o">+</span>
+  <span class="nf">scale_y_continuous</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;relative sea level (mm)&quot;</span><span class="p">)</span>
+<span class="nf">dev.off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-apply-and-aggregate">
+<h2>5. Using <code class="docutils literal notranslate"><span class="pre">apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">aggregate()</span></code><a class="headerlink" href="#using-apply-and-aggregate" title="Permalink to this headline">¶</a></h2>
+<p>Next, we want to aggregate the monthly data to annual data. The <code class="docutils literal notranslate"><span class="pre">decimalyear</span></code> column means that e.g. 1900.0 is January 1st, 1900 and 1900.5 would be in the middle of the year 1900. Let us first try what the <code class="docutils literal notranslate"><span class="pre">apply()</span></code> function does:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">apply</span><span class="p">(</span><span class="n">sealevel</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>   <span class="c1"># apply the function &quot;mean&quot; to sealevel over the index 2 (=columns)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">apply</span><span class="p">(</span><span class="n">sealevel</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean</span><span class="p">):</span> <span class="nb">object</span> <span class="s1">&#39;sealevel&#39;</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="ne">Traceback</span>:
+
+<span class="mi">1</span><span class="o">.</span> <span class="n">apply</span><span class="p">(</span><span class="n">sealevel</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">apply</span><span class="p">(</span><span class="n">sealevel</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span> <span class="c1"># remove the missing values before applying the mean</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the last arguments (from argument 4 on) are passed to the function that is called for every column, in this case, <code class="docutils literal notranslate"><span class="pre">mean()</span></code>.</p>
+<p>We could also calculate a mean over the rows, but it makes no sense:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">apply</span><span class="p">(</span><span class="n">sealevel</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Use the function <code class="docutils literal notranslate"><span class="pre">quantile</span></code> inside <code class="docutils literal notranslate"><span class="pre">apply()</span></code> to calculate the 5th, 50th and 95th percentile of each column of our data.frame</p>
+<p>Another nice function is <code class="docutils literal notranslate"><span class="pre">aggregate()</span></code>, it can also be applied to a whole data.frame. We will use it to calculate annnual means from the monthly means. To do so, we first have to get the calendar year from the decimal year by rounding it downward:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sealevel</span><span class="o">$</span><span class="n">year</span> <span class="o">=</span> <span class="nf">floor</span><span class="p">(</span><span class="n">sealevel</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">)</span>
+<span class="n">sealevel</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">15</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can use <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> to apply a function (in this case the <code class="docutils literal notranslate"><span class="pre">mean</span></code> function) over those entries where <code class="docutils literal notranslate"><span class="pre">year</span></code> is equal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sealevel_annual</span> <span class="o">=</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">sealevel</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">sealevel</span><span class="o">$</span><span class="n">year</span><span class="p">),</span> <span class="n">mean</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">sealevel_annual</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Use the <code class="docutils literal notranslate"><span class="pre">ggplot</span></code> function to plot the annual time series.</p>
+<p>We can use the function <code class="docutils literal notranslate"><span class="pre">write.csv2()</span></code> to export the data to a file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">write.csv2</span><span class="p">(</span><span class="n">sealevel_annual</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="s">&quot;warnemuende_annual.txt&quot;</span><span class="p">,</span> <span class="n">row.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loops-and-if-clauses">
+<h2>6. Loops and if-clauses<a class="headerlink" href="#loops-and-if-clauses" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># setwd(&quot;/students_files/feldner&quot;)   # put in your surname here</span>
+<span class="n">sealevel</span> <span class="o">=</span> <span class="nf">read.csv2</span><span class="p">(</span><span class="n">file</span> <span class="o">=</span> <span class="s">&quot;warnemuende.txt&quot;</span><span class="p">,</span> <span class="n">skip</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">stringsAsFactors</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="n">sealevel</span><span class="o">$</span><span class="n">decimalyear</span> <span class="o">=</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">sealevel</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">)</span>
+<span class="n">sealevel</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">sealevel</span><span class="o">$</span><span class="n">sealevel</span><span class="o">==</span><span class="m">-99999</span><span class="p">]</span><span class="o">=</span><span class="kc">NA</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">sealevel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<thead><tr><th scope=col>decimalyear</th><th scope=col>sealevel</th><th scope=col>missingdays</th><th scope=col>attentionflag</th></tr></thead>
+<tbody>
+	<tr><td>1855.292</td><td>6893    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.375</td><td>6928    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.458</td><td>6843    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.542</td><td>6926    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.625</td><td>7004    </td><td>0       </td><td>0       </td></tr>
+	<tr><td>1855.708</td><td>6993    </td><td>0       </td><td>0       </td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>In some years there are rises in the sea level, in some years there are drops compared to the year before. Assume your task is to find the 5 years with the largest rise and the 5 years with the largest drop. One way to solve the problem is using a loop.</p>
+<p>There are more elegant ways of solving the problem. Typically you should avoid loops in R, since they make the calculations slow.</p>
+<p><span style="color: red;">Bonus Task: </span> While we solve the problem with a loop, write a solution without a loop!</p>
+<p>Loops in R work like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you want to loop over an entire vector, use the <code class="docutils literal notranslate"><span class="pre">seq_along()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_along</span><span class="p">(</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Print the sea differences between a year and the previous one. You can use the <code class="docutils literal notranslate"><span class="pre">length()</span></code> function to get the number of elements in a vector.</p>
+<p>Let’s put more info into the output. We can use the function <code class="docutils literal notranslate"><span class="pre">paste0()</span></code> to connect strings:</p>
+<p><code class="docutils literal notranslate"><span class="pre">paste0(&quot;abc&quot;,</span> <span class="pre">&quot;def&quot;)</span> <span class="pre">==</span> <span class="pre">&quot;abcdef&quot;</span></code></p>
+<p>Let’s make the loop more nice:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">2</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">difference</span> <span class="o">=</span> <span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">i</span><span class="m">-1</span><span class="p">]</span>
+    <span class="n">difference</span> <span class="o">=</span> <span class="nf">round</span><span class="p">(</span><span class="n">difference</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;In the year &quot;</span><span class="p">,</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">year</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s">&quot; we saw a sea level change by &quot;</span><span class="p">,</span><span class="n">difference</span><span class="p">,</span><span class="s">&quot; mm.&quot;</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s explitly write whether we saw a rise of drop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">2</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">difference</span> <span class="o">=</span> <span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">i</span><span class="m">-1</span><span class="p">]</span>
+    <span class="n">difference</span> <span class="o">=</span> <span class="nf">round</span><span class="p">(</span><span class="n">difference</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">difference</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;In the year &quot;</span><span class="p">,</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">year</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s">&quot; we saw a sea level rise: &quot;</span><span class="p">,</span><span class="n">difference</span><span class="p">,</span><span class="s">&quot; mm.&quot;</span><span class="p">))</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;In the year &quot;</span><span class="p">,</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">year</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s">&quot; we saw a sea level drop: &quot;</span><span class="p">,</span><span class="n">difference</span><span class="p">,</span><span class="s">&quot; mm.&quot;</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let us create a table of rises and drops like this:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>from</p></th>
+<th class="head"><p>to</p></th>
+<th class="head"><p>change</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1900</p></td>
+<td><p>1901</p></td>
+<td><p>33.1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1901</p></td>
+<td><p>1902</p></td>
+<td><p>10.2</p></td>
+</tr>
+</tbody>
+</table>
+<p>To do so, we start with two empty data.frames <code class="docutils literal notranslate"><span class="pre">rises</span></code> and <code class="docutils literal notranslate"><span class="pre">drops</span></code>.
+Every year we add a line to one of the data.frames, depending in whether the sea level rose or fell.
+We use the function <code class="docutils literal notranslate"><span class="pre">rbind()</span></code> to merge two data.frames by their rows. Let us first check how <code class="docutils literal notranslate"><span class="pre">rbind()</span></code> works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>                 <span class="c1"># define data.frame with one row</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> <span class="n">b</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">8</span><span class="p">))</span>   <span class="c1"># define a second data.frame with three rows</span>
+<span class="nf">rbind</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span><span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Okay so let’s do it. We start with <code class="docutils literal notranslate"><span class="pre">NULL</span></code> (no data) in the data.frames <code class="docutils literal notranslate"><span class="pre">rises</span></code> and <code class="docutils literal notranslate"><span class="pre">falls</span></code>.</p>
+<p><span style="color: red;">Task: </span> Complete the code so it will create our list of rises and falls.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize with no data</span>
+<span class="n">rises</span><span class="o">=</span><span class="kc">NULL</span>
+<span class="n">falls</span><span class="o">=</span><span class="kc">NULL</span>
+
+<span class="c1"># loop over years</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">2</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">difference</span> <span class="o">=</span> <span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">i</span><span class="m">-1</span><span class="p">]</span>
+    <span class="c1"># create data.frame with one row</span>
+    <span class="n">my_change</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">from</span><span class="o">=???</span><span class="p">,</span> 
+                           <span class="n">to</span><span class="o">=???</span><span class="p">,</span>
+                           <span class="n">change</span><span class="o">=???</span><span class="p">)</span>
+    <span class="c1"># append it to either &quot;rises&quot; or &quot;falls&quot;</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">difference</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rises</span> <span class="o">=</span> <span class="o">???</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+        <span class="n">falls</span> <span class="o">=</span> <span class="o">???</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># show the first rows of the output</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;first 10 rises:&quot;</span><span class="p">)</span>
+<span class="n">rises</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,]</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;first 10 falls:&quot;</span><span class="p">)</span>
+<span class="n">falls</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now all we need to do is sort the rises and falls and choose the 5 largest ones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rises</span> <span class="o">=</span> <span class="n">rises</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">rises</span><span class="o">$</span><span class="n">change</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),]</span>
+<span class="n">falls</span> <span class="o">=</span> <span class="n">falls</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">falls</span><span class="o">$</span><span class="n">change</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">),]</span>
+
+<span class="n">largest_rises</span> <span class="o">=</span> <span class="n">rises</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,]</span>
+<span class="n">largest_falls</span> <span class="o">=</span> <span class="n">falls</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,]</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;largest rises:&quot;</span><span class="p">)</span>
+<span class="n">largest_rises</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;largest falls:&quot;</span><span class="p">)</span>
+<span class="n">largest_falls</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="writing-your-own-functions">
+<h2>7. Writing your own functions<a class="headerlink" href="#writing-your-own-functions" title="Permalink to this headline">¶</a></h2>
+<p>Writing functions is very important for speeding up your work. It avoids that you do things twice and reduces errors.</p>
+<p>Writing functions in R works like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">calc_power</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">exponent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="n">base</span><span class="o">^</span><span class="n">exponent</span>
+    <span class="nf">return</span><span class="p">(</span><span class="n">power</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can then invoke functions several times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">calc_power</span><span class="p">(</span><span class="m">9</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+<span class="nf">calc_power</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Please repeat the largest-rise calculations using a function:</p>
+<p>(1) Write a function that calculates the n largest rises in a time series.</p>
+<p>(2) Apply this function to the annual data.</p>
+<p><span style="color: red;">Task: </span> Complete the following code accordingly. You can copy code from above. But make sure you replace the original variables by the arguments of the function, so your function should not contain anything called “sealevel”. (Because it should work on any time series.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">largest_rises</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="n">rises</span> <span class="o">=</span> <span class="kc">NULL</span>
+    
+    <span class="o">???</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="n">largest_rises</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">largest_rises</span><span class="p">(</span><span class="n">sealevel_annual</span><span class="o">$</span><span class="n">year</span><span class="p">,</span> <span class="n">sealevel_annual</span><span class="o">$</span><span class="n">sealevel</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function will not work if missing values occur. We make it ignore possible missing values by checking <code class="docutils literal notranslate"><span class="pre">is.finite(difference)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">largest_rises</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="n">rises</span> <span class="o">=</span> <span class="kc">NULL</span>
+    
+    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">2</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">values</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">difference</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="m">-1</span><span class="p">]</span>
+        <span class="c1"># create data.frame with one row</span>
+        <span class="n">my_change</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="n">timesteps</span><span class="p">[</span><span class="n">i</span><span class="m">-1</span><span class="p">],</span> 
+                               <span class="n">to</span><span class="o">=</span><span class="n">timesteps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                               <span class="n">change</span><span class="o">=</span><span class="n">difference</span><span class="p">)</span>
+        <span class="c1"># append it to either &quot;rises&quot; or &quot;falls&quot;</span>
+        <span class="nf">if </span><span class="p">(</span><span class="nf">is.finite</span><span class="p">(</span><span class="n">difference</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nf">if </span><span class="p">(</span><span class="n">difference</span> <span class="o">&gt;</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">rises</span> <span class="o">=</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">rises</span><span class="p">,</span><span class="n">my_change</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="n">rises</span> <span class="o">=</span> <span class="n">rises</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">rises</span><span class="o">$</span><span class="n">change</span><span class="p">,</span><span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),]</span>
+    <span class="n">largest_rises</span> <span class="o">=</span> <span class="n">rises</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">,]</span>
+    
+    <span class="nf">return</span><span class="p">(</span><span class="n">largest_rises</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><span style="color: red;">Task: </span> Calculate the 10 largest rises in the monthly sea level data.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="content.html" title="previous page">Content in Jupyter Book</a>
+    <a class='right-next' id="next-link" href="intro_r_2.html" title="next page">Introduction into R - Part 2</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Florian Börgel<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
