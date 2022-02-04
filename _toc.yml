@@ -1,10 +1,9 @@
-# Table of content
-# Learn more at https://jupyterbook.org/customize/toc.html
-#
-- file: intro
-- file: content
+format: jb-article
+root: markdown/intro
+sections:
+- file: markdown/content
   sections:
-    - file: intro_r_1
-    - file: intro_r_2
-    - file: statistical_tests
-    - file: Wavelet_lecture
+  - file: notebooks/intro_r_1
+  - file: notebooks/intro_r_2
+  - file: notebooks/statistical_tests
+  - file: notebooks/Wavelet_lecture

@@ -3,7 +3,7 @@
 
 title: Baltic Earth Winter School
 author: Florian Börgel
-logo: logo_baltic_earth.jpg
+logo: figures/logo_baltic_earth.jpg
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
