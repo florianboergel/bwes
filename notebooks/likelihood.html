@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Likelihood &#8212; Baltic Earth Winter School</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Non-parametric models" href="nonparametric_models.html" />
+    <link rel="prev" title="Dice autocorrelation experiment" href="bootstrap_acf.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo_baltic_earth.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Baltic Earth Winter School</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/intro.html">
+   Intro
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../markdown/content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_r_1.html">
+     Introduction into R - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_r_2.html">
+     Introduction into R - Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="statistical_tests.html">
+     Statistical tests in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Wavelet_lecture.html">
+     Introduction to wavelet analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="incomplete_time_series_1.html">
+     Analysis of incomplete time series - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="incomplete_time_series_2.html">
+     Analysis of incomplete time series - Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="eof.html">
+     EOF analysis example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bootstrap_acf.html">
+     Dice autocorrelation experiment
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nonparametric_models.html">
+     Non-parametric models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/likelihood.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/bwes/main?urlpath=lab/tree/./notebooks/likelihood.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1-sum-of-dices">
+   Example 1: Sum of dices
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-statistical-model">
+     The statistical model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-blue-definition-of-likelihood-span">
+     <span style="color:blue">
+      Definition of Likelihood
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-likelihood">
+     Calculating likelihood
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#maximum-likelihood-estimation">
+     Maximum-likelihood estimation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#playground-area">
+     Playground area
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuously-valued-results">
+   Continuously valued results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-systematic-and-random-parameters">
+   Estimating systematic and random parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayesian-approach">
+   Bayesian approach
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="likelihood">
+<h1>Likelihood<a class="headerlink" href="#likelihood" title="Permalink to this headline">¶</a></h1>
+<p>This notebook is about the concept of likelihood. Likelihood is a measure by which different statistical models can be compared. Especially parameters in a statistical model can be estimated by the “maximum likelihood” method.</p>
+<div class="section" id="example-1-sum-of-dices">
+<h2>Example 1: Sum of dices<a class="headerlink" href="#example-1-sum-of-dices" title="Permalink to this headline">¶</a></h2>
+<p>Let’s play a game: Person A gets 5 classical dices (with numbers 1 to 6). He/she can choose to roll <span class="math notranslate nohighlight">\(n=1\dots 5\)</span> of these dices and will tell us the sum. The same number of dices is rolled again, and we get a second sum.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sums_of_n_dices</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Can we find out how many dices Person A took?</p>
+<div class="section" id="the-statistical-model">
+<h3>The statistical model<a class="headerlink" href="#the-statistical-model" title="Permalink to this headline">¶</a></h3>
+<p>Our statistical model says that these numbers are the results of a random experiment. The number of dices <span class="math notranslate nohighlight">\(n\)</span> is a model parameter.</p>
+<p>For a fixed <span class="math notranslate nohighlight">\(n\)</span>, we get probabilities for the possilbe sums of eyes. For <span class="math notranslate nohighlight">\(n=1\)</span>, we obviously get:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">6</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">6</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/likelihood_4_0.png" src="../_images/likelihood_4_0.png" />
+</div>
+</div>
+<p>For <span class="math notranslate nohighlight">\(n=2\)</span>, the whole thing gets more complicated. Let us calculate all possible combinations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="m">2</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="m">1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="m">6</span><span class="p">)</span>     <span class="c1"># possible results go from 2 to 12</span>
+
+<span class="c1"># first calculate the number of possibilities to get a certain sum</span>
+<span class="n">possibilities</span> <span class="o">=</span> <span class="n">results</span><span class="o">*</span><span class="m">0</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">dice1</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">dice2</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span><span class="o">=</span><span class="n">dice1</span><span class="o">+</span><span class="n">dice2</span>
+        <span class="n">possibilities</span><span class="p">[</span><span class="n">results</span><span class="o">==</span><span class="n">sum</span><span class="p">]</span><span class="o">=</span><span class="n">possibilities</span><span class="p">[</span><span class="n">results</span><span class="o">==</span><span class="n">sum</span><span class="p">]</span><span class="m">+1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># then calculate probability by dividing through the total number of combinations</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">possibilities</span> <span class="o">/</span> <span class="nf">sum</span><span class="p">(</span><span class="n">possibilities</span><span class="p">)</span>
+
+<span class="c1"># do the plot</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span><span class="n">probabilities</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/likelihood_6_0.png" src="../_images/likelihood_6_0.png" />
+</div>
+</div>
+<p>If <span class="math notranslate nohighlight">\(n=2\)</span>, what is the probability that exactly our observed numbers were the result?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">match</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="s">&quot;d&quot;</span><span class="p">),</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="s">&quot;b&quot;</span><span class="p">,</span><span class="s">&quot;c&quot;</span><span class="p">,</span><span class="s">&quot;d&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>3</li>
+	<li>4</li>
+</ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># find out the indexes in the probability vector</span>
+<span class="n">indexes</span> <span class="o">=</span> <span class="nf">match</span><span class="p">(</span><span class="n">sums_of_n_dices</span><span class="p">,</span><span class="n">results</span><span class="p">)</span> 
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;indexes in probability vector:&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">indexes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;indexes in probability vector:&quot;
+[1]  9 11
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># find out the individual probabilities for the single sums</span>
+<span class="n">ind_probs</span> <span class="o">=</span> <span class="n">probabilities</span><span class="p">[</span><span class="n">indexes</span><span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;probabilities of individual sums:&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">ind_probs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;probabilities of individual sums:&quot;
+[1] 0.08333333 0.02777778
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># find out the overall probability:</span>
+<span class="n">overall_prob</span> <span class="o">=</span> <span class="nf">prod</span><span class="p">(</span><span class="n">ind_probs</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;overall probability:&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">overall_prob</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;overall probability:&quot;
+[1] 0.002314815
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we see this value as a function of the model parameter <span class="math notranslate nohighlight">\(n\)</span>, we call it <strong>likelihood</strong> of the statistical model.</p>
+</div>
+<div class="section" id="span-style-color-blue-definition-of-likelihood-span">
+<h3><span style="color:blue">Definition of Likelihood</span><a class="headerlink" href="#span-style-color-blue-definition-of-likelihood-span" title="Permalink to this headline">¶</a></h3>
+<p><span style="color:blue">The likelihood of a statistical model is the probability (density) for the actually observed result, seen as a function of a model parameter.</span></p>
+</div>
+<div class="section" id="calculating-likelihood">
+<h3>Calculating likelihood<a class="headerlink" href="#calculating-likelihood" title="Permalink to this headline">¶</a></h3>
+<p>So, what’s the likelihood for <span class="math notranslate nohighlight">\(n=3\dots 5\)</span>? Let us write a recursive function to estimate the probabilities:
+</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">calc_probability</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="m">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># one dice only - return a very simple data.frame</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">results</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span> <span class="n">probabilities</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">6</span><span class="p">,</span><span class="m">6</span><span class="p">))</span>
+        <span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+        <span class="c1"># first, get the probabilities for sums of n-1 dices</span>
+        <span class="n">old_probabilities</span> <span class="o">=</span> <span class="nf">calc_probability</span><span class="p">(</span><span class="n">n</span><span class="m">-1</span><span class="p">)</span><span class="o">$</span><span class="n">probabilities</span>
+        <span class="c1"># the new results are easy to calculate</span>
+        <span class="n">new_results</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="m">1</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="m">6</span><span class="p">)</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">new_results</span><span class="p">)</span>
+        <span class="c1"># initialise new probabilities with zero</span>
+        <span class="n">new_probabilities</span> <span class="o">=</span> <span class="n">new_results</span><span class="o">*</span><span class="m">0</span>
+        <span class="c1"># the new probabilities emerge from the old ones depending on the value of the current dice</span>
+        <span class="n">new_probabilities</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-5</span><span class="p">)]</span> <span class="o">=</span> <span class="n">new_probabilities</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-5</span><span class="p">)]</span> <span class="o">+</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span> <span class="o">*</span> <span class="n">old_probabilities</span> <span class="c1"># 1/6 chance that new dice == 1</span>
+        <span class="n">new_probabilities</span><span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-4</span><span class="p">)]</span> <span class="o">=</span> <span class="n">new_probabilities</span><span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-4</span><span class="p">)]</span> <span class="o">+</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span> <span class="o">*</span> <span class="n">old_probabilities</span> <span class="c1"># 1/6 chance that new dice == 2</span>
+        <span class="n">new_probabilities</span><span class="p">[</span><span class="m">3</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-3</span><span class="p">)]</span> <span class="o">=</span> <span class="n">new_probabilities</span><span class="p">[</span><span class="m">3</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-3</span><span class="p">)]</span> <span class="o">+</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span> <span class="o">*</span> <span class="n">old_probabilities</span> <span class="c1"># 1/6 chance that new dice == 3</span>
+        <span class="n">new_probabilities</span><span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">new_probabilities</span><span class="p">[</span><span class="m">4</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-2</span><span class="p">)]</span> <span class="o">+</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span> <span class="o">*</span> <span class="n">old_probabilities</span> <span class="c1"># 1/6 chance that new dice == 4</span>
+        <span class="n">new_probabilities</span><span class="p">[</span><span class="m">5</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">new_probabilities</span><span class="p">[</span><span class="m">5</span><span class="o">:</span><span class="p">(</span><span class="n">l</span><span class="m">-1</span><span class="p">)]</span> <span class="o">+</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span> <span class="o">*</span> <span class="n">old_probabilities</span> <span class="c1"># 1/6 chance that new dice == 5</span>
+        <span class="n">new_probabilities</span><span class="p">[</span><span class="m">6</span><span class="o">:</span><span class="n">l</span>    <span class="p">]</span> <span class="o">=</span> <span class="n">new_probabilities</span><span class="p">[</span><span class="m">6</span><span class="o">:</span><span class="n">l</span>    <span class="p">]</span> <span class="o">+</span> <span class="m">1</span><span class="o">/</span><span class="m">6</span> <span class="o">*</span> <span class="n">old_probabilities</span> <span class="c1"># 1/6 chance that new dice == 6</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">results</span><span class="o">=</span><span class="n">new_results</span><span class="p">,</span> <span class="n">probabilities</span><span class="o">=</span><span class="n">new_probabilities</span><span class="p">)</span>
+        <span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="p">}</span> 
+<span class="p">}</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">calc_probability</span><span class="p">(</span><span class="m">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/likelihood_13_0.png" src="../_images/likelihood_13_0.png" />
+</div>
+</div>
+<p>Now we can estimate the likelihood of a given <span class="math notranslate nohighlight">\(n\)</span> in two steps:</p>
+<ul class="simple">
+<li><p>Calculate the probability distribution for <span class="math notranslate nohighlight">\(n\)</span></p></li>
+<li><p>Estimate the probability that exactly the observed result occurs</p></li>
+</ul>
+<p>Let’s write this down as a function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">likelihood</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1"># calculate probability density</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="nf">calc_probability</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    
+    <span class="c1"># check if all individual sums are possible </span>
+    <span class="nf">if </span><span class="p">(</span><span class="nf">all</span><span class="p">(</span><span class="n">sums_of_n_dices</span> <span class="o">%in%</span> <span class="n">df</span><span class="o">$</span><span class="n">results</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">indexes</span> <span class="o">=</span> <span class="nf">match</span><span class="p">(</span><span class="n">sums_of_n_dices</span><span class="p">,</span><span class="n">df</span><span class="o">$</span><span class="n">results</span><span class="p">)</span> 
+        <span class="n">ind_probs</span> <span class="o">=</span> <span class="n">df</span><span class="o">$</span><span class="n">probabilities</span><span class="p">[</span><span class="n">indexes</span><span class="p">]</span>
+        <span class="n">overall_prob</span> <span class="o">=</span> <span class="nf">prod</span><span class="p">(</span><span class="n">ind_probs</span><span class="p">)</span>
+        <span class="nf">return</span><span class="p">(</span><span class="n">overall_prob</span><span class="p">)</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span> <span class="c1"># there was a sum which is not possible with n dices</span>
+        <span class="nf">return</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we run this function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">my_likelihood</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">n</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">my_likelihood</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="nf">likelihood</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/likelihood_17_0.png" src="../_images/likelihood_17_0.png" />
+</div>
+</div>
+<p>Please note one important difference between probability and likelihood:</p>
+<p><strong>Likelihood is not normalised to a sum of one.</strong></p>
+<p>Likelihood should only be interpreted relatively.</p>
+</div>
+<div class="section" id="maximum-likelihood-estimation">
+<h3>Maximum-likelihood estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permalink to this headline">¶</a></h3>
+<p>That’s easy: The maximum-likelihood estimator chooses the parameter value with the highest likelihood.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ml_estimate</span> <span class="o">=</span> <span class="nf">which</span><span class="p">(</span><span class="n">my_likelihood</span> <span class="o">==</span> <span class="nf">max</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Maximum likelihood estimate: n = &quot;</span><span class="p">,</span><span class="n">ml_estimate</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Maximum likelihood estimate: n = 3&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>But we can also use this to estimate uncertainty intervals by a likelihood ratio test. E.g. we exclude all those parameters whose likelihood is below 5% of the maximum likelihood:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">possible</span> <span class="o">=</span> <span class="nf">which</span><span class="p">(</span><span class="n">my_likelihood</span> <span class="o">&gt;=</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">max</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Possible n value after likelihood ratio test: n = &quot;</span><span class="p">,</span><span class="n">possible</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Possible n value after likelihood ratio test: n = 2&quot;
+[2] &quot;Possible n value after likelihood ratio test: n = 3&quot;
+[3] &quot;Possible n value after likelihood ratio test: n = 4&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">possible_likelihoods</span> <span class="o">=</span> <span class="n">my_likelihood</span><span class="p">[</span><span class="n">possible</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">possible</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="n">possible_likelihoods</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="nf">rev</span><span class="p">(</span><span class="nf">order</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">p</span><span class="p">)),]</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  n           p
+2 3 0.014467593
+3 4 0.005953742
+1 2 0.002314815
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Please note that this does not mean that <span class="math notranslate nohighlight">\(n\)</span> is in this interval with 95% probability!</strong></p>
+</div>
+<div class="section" id="playground-area">
+<h3>Playground area<a class="headerlink" href="#playground-area" title="Permalink to this headline">¶</a></h3>
+<p>Here you can check whether the ML estimator works.
+You can choose more than two results, or more than five dices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sums_of_n_dices</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">12</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="n">my_likelihood</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">n</span> <span class="n">in</span> <span class="nf">seq_along</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">my_likelihood</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="nf">likelihood</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">ml_estimate</span> <span class="o">=</span> <span class="nf">which</span><span class="p">(</span><span class="n">my_likelihood</span> <span class="o">==</span> <span class="nf">max</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Maximum likelihood estimate: n = &quot;</span><span class="p">,</span><span class="n">ml_estimate</span><span class="p">))</span>
+<span class="n">possible</span> <span class="o">=</span> <span class="nf">which</span><span class="p">(</span><span class="n">my_likelihood</span> <span class="o">&gt;=</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">max</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Possible n value after likelihood ratio test: n = &quot;</span><span class="p">,</span><span class="n">possible</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Maximum likelihood estimate: n = 2&quot;
+[1] &quot;Possible n value after likelihood ratio test: n = 2&quot;
+[2] &quot;Possible n value after likelihood ratio test: n = 3&quot;
+</pre></div>
+</div>
+<img alt="../_images/likelihood_24_1.png" src="../_images/likelihood_24_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="continuously-valued-results">
+<h2>Continuously valued results<a class="headerlink" href="#continuously-valued-results" title="Permalink to this headline">¶</a></h2>
+<p>Often the results are not discrete as in our dice example, but continuous.</p>
+<p><strong>Example:</strong> Person B shall add <span class="math notranslate nohighlight">\(n\)</span> real numbers in the interval <span class="math notranslate nohighlight">\([0\dots 1]\)</span>. This is done twice with the same <span class="math notranslate nohighlight">\(n\)</span>, the results are 3.753421 and 5.295758. Which <span class="math notranslate nohighlight">\(n\)</span> was chosen?</p>
+<p>We see that the probability that exactly these numbers are the result is always zero. So we use a probability density, instead of a probability, to calculate the likelihood.</p>
+<p><strong>Hint:</strong> This means the likelihood is not dimensionless. If, e.g., the observations are in meters,</p>
+<p>3.05 m, 4.07 m, 2.76 m</p>
+<p>the unit of the likelihood is 1/m³, because it is approximately calculated as follows:</p>
+<div class="math notranslate nohighlight">
+\[l = \frac{p(3.045\,\textrm{m} &lt; y1 &lt; 3.055\,\textrm{m})}{0.01\,\textrm{m}}\frac{p(4.065\,\textrm{m} &lt; y2 &lt; 4.075\,\textrm{m})}{0.01\,\textrm{m}}\frac{p(2.755\,\textrm{m} &lt; y3 &lt; 2.765\,\textrm{m})}{0.01\,\textrm{m}}\]</div>
+</div>
+<div class="section" id="estimating-systematic-and-random-parameters">
+<h2>Estimating systematic and random parameters<a class="headerlink" href="#estimating-systematic-and-random-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Mostly one needs to estimate at least two types of parameters, the systematic and the random parameters. Example: a linea r model</p>
+<div class="math notranslate nohighlight">
+\[\hat{y_n} = \beta_0 + \beta_1 x_n + \varepsilon_n\]</div>
+<p>with Gaussian residuals <span class="math notranslate nohighlight">\(\epsilon_n\)</span> with <span class="math notranslate nohighlight">\(E(\varepsilon_n^2)=\sigma^2\)</span>.</p>
+<p>Here, we need to estimate three parameters, <span class="math notranslate nohighlight">\(\beta_0\)</span>, <span class="math notranslate nohighlight">\(\beta_1\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>A maximum-likelihood estimator typically underestimates the true value of <span class="math notranslate nohighlight">\(\sigma\)</span> here, which is why a Restricted Maximum Likelihood (REML) estimator should be used. It estimates the systematic parameters (<span class="math notranslate nohighlight">\(\beta_0\)</span> and <span class="math notranslate nohighlight">\(\beta_1\)</span>)first, and afterwards does an ML estimation of <span class="math notranslate nohighlight">\(\sigma\)</span> based on the residuals <span class="math notranslate nohighlight">\(\varepsilon_n\)</span> only, taking the loss of the degrees of freedom (by the <span class="math notranslate nohighlight">\(\beta_0, \beta_1\)</span> estimation) into account. This gives unbiased results for <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+</div>
+<div class="section" id="bayesian-approach">
+<h2>Bayesian approach<a class="headerlink" href="#bayesian-approach" title="Permalink to this headline">¶</a></h2>
+<p>Now person B is doing our dice-rolling experiment. This is different because we already know that their favourite number is three.</p>
+<p>So even before the experiment (“a priori”), we have an idea how many dices they might choose:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">prior_probabilities</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span><span class="p">,</span> <span class="m">3</span><span class="o">/</span><span class="m">6</span><span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="o">/</span><span class="m">7</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">prior_probabilities</span><span class="p">,</span><span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/likelihood_27_0.png" src="../_images/likelihood_27_0.png" />
+</div>
+</div>
+<p>Now Person B tells us their results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sums_of_n_dices</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and we can do a likelihood estimation as before:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">my_likelihood</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">n</span> <span class="n">in</span> <span class="nf">seq_along</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">my_likelihood</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="nf">likelihood</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">ml_estimate</span> <span class="o">=</span> <span class="nf">which</span><span class="p">(</span><span class="n">my_likelihood</span> <span class="o">==</span> <span class="nf">max</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Maximum likelihood estimate: n = &quot;</span><span class="p">,</span><span class="n">ml_estimate</span><span class="p">))</span>
+<span class="n">possible</span> <span class="o">=</span> <span class="nf">which</span><span class="p">(</span><span class="n">my_likelihood</span> <span class="o">&gt;=</span> <span class="m">0.05</span><span class="o">*</span><span class="nf">max</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Possible n value after likelihood ratio test: n = &quot;</span><span class="p">,</span><span class="n">possible</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">my_likelihood</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Maximum likelihood estimate: n = 2&quot;
+[1] &quot;Possible n value after likelihood ratio test: n = 2&quot;
+[2] &quot;Possible n value after likelihood ratio test: n = 3&quot;
+[3] &quot;Possible n value after likelihood ratio test: n = 4&quot;
+</pre></div>
+</div>
+<img alt="../_images/likelihood_31_1.png" src="../_images/likelihood_31_1.png" />
+</div>
+</div>
+<p>The ML estimator suggests that two dices were rolled. But it does not know our prior information that Person B likes the number three so much.</p>
+<p>Here the Bayesian approach helps. In this approach, we simply multiply prior probabilities with the likelihood:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">posterior_probabilities</span> <span class="o">=</span> <span class="n">prior_probabilities</span> <span class="o">*</span> <span class="n">my_likelihood</span>
+<span class="n">posterior_probabilities</span> <span class="o">=</span> <span class="n">posterior_probabilities</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">posterior_probabilities</span><span class="p">)</span> <span class="c1"># normalise to a sum of 1</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">posterior_probabilities</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/likelihood_33_0.png" src="../_images/likelihood_33_0.png" />
+</div>
+</div>
+<p>The Bayesian model suggests that Person B rolled three dices.</p>
+<p>Even if the numbers 7 and 10 suggested that two dices were more likely, this piece of information was too weak to overrule our initial guess.</p>
+<p><strong>Note:</strong> When interpreting likelihoods as probabilities, you always make an initial guess. Even the assumption that all possible parameter values are apriori equally likely is prior information.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="bootstrap_acf.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Dice autocorrelation experiment</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="nonparametric_models.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Non-parametric models</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Florian Börgel<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

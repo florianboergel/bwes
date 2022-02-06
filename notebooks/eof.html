@@ -1,0 +1,753 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EOF analysis example &#8212; Baltic Earth Winter School</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dice autocorrelation experiment" href="bootstrap_acf.html" />
+    <link rel="prev" title="Analysis of incomplete time series - Part 2" href="incomplete_time_series_2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo_baltic_earth.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Baltic Earth Winter School</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/intro.html">
+   Intro
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../markdown/content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_r_1.html">
+     Introduction into R - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_r_2.html">
+     Introduction into R - Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="statistical_tests.html">
+     Statistical tests in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Wavelet_lecture.html">
+     Introduction to wavelet analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="incomplete_time_series_1.html">
+     Analysis of incomplete time series - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="incomplete_time_series_2.html">
+     Analysis of incomplete time series - Part 2
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     EOF analysis example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bootstrap_acf.html">
+     Dice autocorrelation experiment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="likelihood.html">
+     Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nonparametric_models.html">
+     Non-parametric models
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/eof.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/bwes/main?urlpath=lab/tree/./notebooks/eof.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terminology">
+   Terminology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-baltic-sea-monthly-sst">
+   Example: Baltic Sea monthly SST
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="eof-analysis-example">
+<h1>EOF analysis example<a class="headerlink" href="#eof-analysis-example" title="Permalink to this headline">¶</a></h1>
+<p>Here comes a very simple example how to do EOF analysis in R.</p>
+<div class="section" id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+<p>The following are all the same:</p>
+<ul class="simple">
+<li><p>Empirical Orthogonal Functions (EOF, in Geosciences)</p></li>
+<li><p>Principal Component Analysis (PCA, in Statistics)</p></li>
+<li><p>Singular Value Decomposition (SVD, in Linear Algebra)</p></li>
+<li><p>Principal Axis Transform (PAT, in Theoretical Physics)</p></li>
+<li><p>Proper Orthogonal Decomposition (POD, in Mechanical Engineering)</p></li>
+<li><p>Karhunen-Loève-Transform (KLT, in Image Processing)</p></li>
+<li><p>Hotelling Transform (in Economics)</p></li>
+</ul>
+<p>(at least if we talk about classical EOFs).</p>
+<p>We split our signal <span class="math notranslate nohighlight">\(S(x,t)\)</span> into products of spatial patterns <span class="math notranslate nohighlight">\(s_i(x)\)</span>with temporal patterns <span class="math notranslate nohighlight">\(t_i(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[S(x,t) = \sum_i s_i(x) t_i(t)\]</div>
+<p>The trick is to choose them in such a way that</p>
+<ul class="simple">
+<li><p>the spatial patterns are orthogonal, and</p></li>
+<li><p>the temporal patterns are also orthogonal.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\int_x s_i(x) s_j(x) \, \mathrm{dx} = 0 \: \: \forall i\neq j\]</div>
+<div class="math notranslate nohighlight">
+\[\int_t t_i(t) t_j(t) \, \mathrm{dt} = 0 \: \: \forall i\neq j\]</div>
+</div>
+<div class="section" id="example-baltic-sea-monthly-sst">
+<h2>Example: Baltic Sea monthly SST<a class="headerlink" href="#example-baltic-sea-monthly-sst" title="Permalink to this headline">¶</a></h2>
+<p>Let us read in HadISST for the Baltic Sea:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;RNetCDF&quot;</span><span class="p">)</span>
+<span class="n">nc</span> <span class="o">=</span> <span class="nf">open.nc</span><span class="p">(</span><span class="s">&quot;../Data/HadISST_Baltic.nc&quot;</span><span class="p">)</span>
+<span class="n">sst</span> <span class="o">=</span> <span class="nf">var.get.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;TEMPERATURE&quot;</span><span class="p">)</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="nf">var.get.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;LONGITUDE&quot;</span><span class="p">)</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="nf">var.get.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;LATITUDE&quot;</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="nf">var.get.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;TIME&quot;</span><span class="p">)</span>
+<span class="nf">close.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which dimension does <strong>sst</strong> have?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">sst</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>23</li>
+	<li>13</li>
+	<li>1766</li>
+</ol>
+</div></div>
+</div>
+<p>That’s longitude - latitude - depth. Let us plot the first time step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+<span class="nf">image.plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="n">sst</span><span class="p">[,,</span><span class="m">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading required package: spam
+Loading required package: dotCall64
+Loading required package: grid
+Spam version 2.2-2 (2019-03-07) is loaded.
+Type &#39;help( Spam)&#39; or &#39;demo( spam)&#39; for a short introduction 
+and overview of this package.
+Help for individual functions is also obtained by adding the
+suffix &#39;.spam&#39; to the function name, e.g. &#39;help( chol.spam)&#39;.
+
+Attaching package: ‘spam’
+
+The following objects are masked from ‘package:base’:
+
+    backsolve, forwardsolve
+
+Loading required package: maps
+See www.image.ucar.edu/~nychka/Fields for
+ a vignette and other supplements. 
+</pre></div>
+</div>
+<img alt="../_images/eof_5_1.png" src="../_images/eof_5_1.png" />
+</div>
+</div>
+<p>We then convert the time axis to dates. For this purpose we read the “units” attribute of variable “TIME”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">nc</span> <span class="o">=</span> <span class="nf">open.nc</span><span class="p">(</span><span class="s">&quot;../Data/HadISST_Baltic.nc&quot;</span><span class="p">)</span>
+<span class="n">timeunits</span> <span class="o">=</span> <span class="nf">att.get.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="s">&quot;TIME&quot;</span><span class="p">,</span><span class="s">&quot;units&quot;</span><span class="p">)</span>
+<span class="nf">close.nc</span><span class="p">(</span><span class="n">nc</span><span class="p">)</span>
+<span class="n">timeunits</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">'days since 1870-01-01 00:00:00'</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="nf">as.POSIXct</span><span class="p">(</span><span class="n">time</span><span class="o">*</span><span class="m">24</span><span class="o">*</span><span class="m">3600</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s">&quot;1870-01-01&quot;</span><span class="p">,</span><span class="n">tz</span><span class="o">=</span><span class="s">&quot;GMT&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To do an EOF analysis, we need a matrix (space-time) but we have a 3-d array (lat-lon-time). So let us first define a matrix where we put all spatial points in one column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">my_matrix</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span><span class="o">*</span><span class="nf">length</span><span class="p">(</span><span class="n">lat</span><span class="p">),</span><span class="n">ncol</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">time</span><span class="p">))</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">my_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>299</li>
+	<li>1766</li>
+</ol>
+</div></div>
+</div>
+<p>Now fill in the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">my_matrix</span><span class="p">[,]</span> <span class="o">=</span> <span class="n">sst</span><span class="p">[,,]</span>
+<span class="nf">image</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="n">my_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eof_12_0.png" src="../_images/eof_12_0.png" />
+</div>
+</div>
+<p>We want to remove the land points now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">water_points</span> <span class="o">=</span> <span class="nf">is.finite</span><span class="p">(</span><span class="n">sst</span><span class="p">[,,</span><span class="m">1</span><span class="p">])</span>
+<span class="n">water_points</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+<tbody>
+	<tr><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>FALSE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>FALSE</td><td> TRUE</td><td>FALSE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+	<tr><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td> TRUE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td><td>FALSE</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># we select only water rows</span>
+<span class="n">reduced_matrix</span> <span class="o">=</span> <span class="n">my_matrix</span><span class="p">[</span><span class="n">water_points</span><span class="p">,]</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">my_matrix</span><span class="p">)</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">reduced_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>299</li>
+	<li>1766</li>
+</ol>
+</div><div class="output text_html"><ol class=list-inline>
+	<li>91</li>
+	<li>1766</li>
+</ol>
+</div></div>
+</div>
+<p>Now we can do the EOF analysis by the R function <strong>svd()</strong> (singular value decomposition).</p>
+<p>We can remove the mean first, it depends on what we want to explain by the EOF analysis: The temperature signal or its variation. Let’s first keep the matrix as it is.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">eof</span> <span class="o">=</span> <span class="nf">svd</span><span class="p">(</span><span class="n">reduced_matrix</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">eof</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Length Class  Mode   
+d     91 -none- numeric
+u   8281 -none- numeric
+v 160706 -none- numeric
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output contains the following:</p>
+<ul class="simple">
+<li><p>Vector <strong>d</strong> contains the singular values</p></li>
+<li><p>The columns of <strong>u</strong> are the normalised spatial patterns</p></li>
+<li><p>The columns of <strong>v</strong> are the normalised temporal patterns</p></li>
+</ul>
+<p>It is a matter of taste whether we multiply the scale <span class="math notranslate nohighlight">\(d_i\)</span> to the spatial or temporal component. We will multiply it to the temporal component.</p>
+<p>Let us first see the explained variance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">explained_signal</span> <span class="o">=</span> <span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="o">^</span><span class="m">2</span> <span class="o">/</span> <span class="nf">sum</span><span class="p">(</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+<span class="n">explained_signal</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">explained_signal</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>0.90911430671135</li>
+	<li>0.0799359609407655</li>
+	<li>0.00343484490081614</li>
+	<li>0.00182459619787223</li>
+	<li>0.00119909959615942</li>
+</ol>
+</div><img alt="../_images/eof_19_1.png" src="../_images/eof_19_1.png" />
+</div>
+</div>
+<p>We see that only the first two EOFs play a role and explain 98% and 1.6% of the <strong>squared temperature signal</strong> (not the variance).</p>
+<p>Let’s plot the temporal component of EOF1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eof_21_0.png" src="../_images/eof_21_0.png" />
+</div>
+</div>
+<p>Looks something like a seasonal pattern, but all values are negative.</p>
+<p>Remember that we can negate both the spatial and the temporal component and get the same result.</p>
+<p>To plot the spatial pattern as well, we need to add the land points again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">eof1</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+<span class="n">eof1</span><span class="p">[</span><span class="n">water_points</span><span class="p">]</span> <span class="o">=</span> <span class="n">eof</span><span class="o">$</span><span class="n">u</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
+<span class="nf">image.plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="n">eof1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eof_23_0.png" src="../_images/eof_23_0.png" />
+</div>
+</div>
+<p>The spatial values are also negative like the temporal ones, so it might make sense to multiply both of them by -1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">image.plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="o">-</span><span class="n">eof1</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="o">-</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="c1"># zoom in to first three years</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">],</span><span class="o">-</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eof_25_0.png" src="../_images/eof_25_0.png" />
+<img alt="../_images/eof_25_1.png" src="../_images/eof_25_1.png" />
+<img alt="../_images/eof_25_2.png" src="../_images/eof_25_2.png" />
+</div>
+</div>
+<p>Now do the same for the second EOF:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">eof2</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+<span class="n">eof2</span><span class="p">[</span><span class="n">water_points</span><span class="p">]</span> <span class="o">=</span> <span class="n">eof</span><span class="o">$</span><span class="n">u</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span>
+<span class="nf">image.plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="n">eof2</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">2</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="c1"># zoom in to first three years</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">],</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">,</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">2</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eof_27_0.png" src="../_images/eof_27_0.png" />
+<img alt="../_images/eof_27_1.png" src="../_images/eof_27_1.png" />
+<img alt="../_images/eof_27_2.png" src="../_images/eof_27_2.png" />
+</div>
+</div>
+<p>It is sometimes a good idea to scale the spatial EOF to have a maximum of 1, so you can more easily interpret the temporal EOF.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span><span class="o">=</span><span class="nf">max</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">eof1</span><span class="p">),</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">image.plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="o">-</span><span class="n">eof1</span><span class="o">/</span><span class="n">scale</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="o">-</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="c1"># zoom in to first three years</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">],</span><span class="o">-</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eof_29_0.png" src="../_images/eof_29_0.png" />
+<img alt="../_images/eof_29_1.png" src="../_images/eof_29_1.png" />
+<img alt="../_images/eof_29_2.png" src="../_images/eof_29_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span><span class="o">=</span><span class="nf">max</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">eof2</span><span class="p">),</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">image.plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="n">eof2</span><span class="o">/</span><span class="n">scale</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="c1"># zoom in to first three years</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">],</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">,</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eof_30_0.png" src="../_images/eof_30_0.png" />
+<img alt="../_images/eof_30_1.png" src="../_images/eof_30_1.png" />
+<img alt="../_images/eof_30_2.png" src="../_images/eof_30_2.png" />
+</div>
+</div>
+<p>Now we repeat the same but remove the mean first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">eof</span> <span class="o">=</span> <span class="nf">svd</span><span class="p">(</span><span class="n">reduced_matrix</span><span class="o">-</span><span class="nf">mean</span><span class="p">(</span><span class="n">reduced_matrix</span><span class="p">))</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">eof</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Length Class  Mode   
+d     91 -none- numeric
+u   8281 -none- numeric
+v 160706 -none- numeric
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then calculate explained variance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">explained_variance</span> <span class="o">=</span> <span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="o">^</span><span class="m">2</span> <span class="o">/</span> <span class="nf">sum</span><span class="p">(</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="o">^</span><span class="m">2</span><span class="p">)</span>
+<span class="n">explained_variance</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><ol class=list-inline>
+	<li>0.90911430671135</li>
+	<li>0.0799359609407655</li>
+	<li>0.00343484490081614</li>
+	<li>0.00182459619787223</li>
+	<li>0.00119909959615942</li>
+</ol>
+</div></div>
+</div>
+<p>Still, the first two EOFs explain the majority of the signal. We plot them again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">eof1</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+<span class="n">eof1</span><span class="p">[</span><span class="n">water_points</span><span class="p">]</span> <span class="o">=</span> <span class="n">eof</span><span class="o">$</span><span class="n">u</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
+<span class="n">scale</span><span class="o">=</span><span class="nf">max</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">eof1</span><span class="p">),</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">image.plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="o">-</span><span class="n">eof1</span><span class="o">/</span><span class="n">scale</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="o">-</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="c1"># zoom in to first three years</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">],</span><span class="o">-</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eof_36_0.png" src="../_images/eof_36_0.png" />
+<img alt="../_images/eof_36_1.png" src="../_images/eof_36_1.png" />
+<img alt="../_images/eof_36_2.png" src="../_images/eof_36_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">eof2</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+<span class="n">eof2</span><span class="p">[</span><span class="n">water_points</span><span class="p">]</span> <span class="o">=</span> <span class="n">eof</span><span class="o">$</span><span class="n">u</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span>
+<span class="n">scale</span><span class="o">=</span><span class="nf">max</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">eof2</span><span class="p">),</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">image.plot</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="o">-</span><span class="n">eof2</span><span class="o">/</span><span class="n">scale</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span><span class="o">-</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="c1"># zoom in to first three years</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">date</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">],</span><span class="o">-</span><span class="n">eof</span><span class="o">$</span><span class="n">v</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">36</span><span class="p">,</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">eof</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="m">2</span><span class="p">]</span><span class="o">*</span><span class="n">scale</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/eof_37_0.png" src="../_images/eof_37_0.png" />
+<img alt="../_images/eof_37_1.png" src="../_images/eof_37_1.png" />
+<img alt="../_images/eof_37_2.png" src="../_images/eof_37_2.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="incomplete_time_series_2.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Analysis of incomplete time series - Part 2</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="bootstrap_acf.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Dice autocorrelation experiment</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Florian Börgel<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

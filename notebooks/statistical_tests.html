@@ -126,6 +126,36 @@
      Introduction to wavelet analysis
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="incomplete_time_series_1.html">
+     Analysis of incomplete time series - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="incomplete_time_series_2.html">
+     Analysis of incomplete time series - Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="eof.html">
+     EOF analysis example
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bootstrap_acf.html">
+     Dice autocorrelation experiment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="likelihood.html">
+     Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nonparametric_models.html">
+     Non-parametric models
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -635,22 +665,6 @@ Bartlett&#39;s K-squared = 0.075467, df = 1, p-value = 0.7835
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">fisher.test</span><span class="p">(</span><span class="n">temperatures1</span><span class="p">,</span><span class="n">temperatures2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">fisher</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">temperatures1</span><span class="p">,</span> <span class="n">temperatures2</span><span class="p">):</span> <span class="s1">&#39;x&#39;</span> <span class="ow">and</span> <span class="s1">&#39;y&#39;</span> <span class="n">must</span> <span class="n">have</span> <span class="n">the</span> <span class="n">same</span> <span class="n">length</span>
-<span class="ne">Traceback</span>:
-
-<span class="mi">1</span><span class="o">.</span> <span class="n">fisher</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">temperatures1</span><span class="p">,</span> <span class="n">temperatures2</span><span class="p">)</span>
-<span class="mi">2</span><span class="o">.</span> <span class="n">stop</span><span class="p">(</span><span class="s2">&quot;&#39;x&#39; and &#39;y&#39; must have the same length&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>So we see no significant change in variance between the two periods before and after 1980.</p>
 </div>
 </div>
@@ -665,16 +679,16 @@ Bartlett&#39;s K-squared = 0.075467, df = 1, p-value = 0.7835
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "iow_r"
+            mode: "r"
         },
         kernelOptions: {
-            kernelName: "iow_r",
+            kernelName: "ir",
             path: "./notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'iow_r'</script>
+    <script>kernelName = 'ir'</script>
 
               </div>
               
