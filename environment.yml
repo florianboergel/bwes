@@ -1,11 +1,7 @@
 channels:
   - conda-forge
-
 dependencies:
   - matplotlib
   - xarray
   - numpy
   - pandas
-  - r-irkernel
-  - r-base
-  - r-WaveletComp
