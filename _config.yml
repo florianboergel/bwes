@@ -19,6 +19,9 @@ latex:
 bibtex_bibfiles:
   - references.bib
 
+launch_buttons:
+  notebook_interface: "jupyterlab" 
+
 # Information about where the book exists on the web
 repository:
   url: https://florianboergel.github.io/bwes  # Online location of your book
