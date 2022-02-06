@@ -7,3 +7,9 @@ sections:
   - file: notebooks/intro_r_2
   - file: notebooks/statistical_tests
   - file: notebooks/Wavelet_lecture
+  - file: notebooks/incomplete_time_series_1
+  - file: notebooks/incomplete_time_series_2
+  - file: notebooks/eof
+  - file: notebooks/bootstrap_acf
+  - file: notebooks/likelihood
+  - file: notebooks/nonparametric_models

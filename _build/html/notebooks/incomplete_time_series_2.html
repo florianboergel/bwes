@@ -1,0 +1,824 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis of incomplete time series - Part 2 &#8212; Baltic Earth Winter School</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Analysis of incomplete time series - Part 1" href="incomplete_time_series_1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo_baltic_earth.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Baltic Earth Winter School</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/intro.html">
+   Intro
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../markdown/content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_r_1.html">
+     Introduction into R - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_r_2.html">
+     Introduction into R - Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="statistical_tests.html">
+     Statistical tests in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Wavelet_lecture.html">
+     Introduction to wavelet analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="incomplete_time_series_1.html">
+     Analysis of incomplete time series - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Analysis of incomplete time series - Part 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/incomplete_time_series_2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/bwes/main?urlpath=lab/tree/./notebooks/incomplete_time_series_2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1-reconstruction-of-cyanobacterial-blooms">
+   Example 1: Reconstruction of cyanobacterial blooms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nonparametric-models">
+   Nonparametric models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#splines">
+   Splines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-2-observed-surface-temperature-at-station-by31">
+   Example 2: Observed surface temperature at station BY31
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="analysis-of-incomplete-time-series-part-2">
+<h1>Analysis of incomplete time series - Part 2<a class="headerlink" href="#analysis-of-incomplete-time-series-part-2" title="Permalink to this headline">¶</a></h1>
+<p>This part will focus on the analysis of irregular time series.</p>
+<div class="section" id="example-1-reconstruction-of-cyanobacterial-blooms">
+<h2>Example 1: Reconstruction of cyanobacterial blooms<a class="headerlink" href="#example-1-reconstruction-of-cyanobacterial-blooms" title="Permalink to this headline">¶</a></h2>
+<p>We read in a time series of a biomarker indicating past cyanobacterial blooms:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Cyano_rec</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../Data/Biomarker_Faeroe.csv&quot;</span><span class="p">,</span><span class="n">dec</span><span class="o">=</span><span class="s">&#39;,&#39;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;\t&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It seems like there is a positive trend: We have more cyanobacteria today. But can we prove it?</p>
+<p>Let us first try a simple linear model. This assumes that the data show a linear rise plus a random error at each data point. The random errors are independent and normally distributed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit the linear model</span>
+<span class="n">my_lm</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="n">Cya</span><span class="o">~</span><span class="n">Age</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Cyano_rec</span><span class="p">)</span>
+<span class="c1"># print a summary of the model fit</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">my_lm</span><span class="p">)</span>
+<span class="c1"># plot the data and the fitted model</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Cya</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_lm</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">))</span>
+<span class="c1"># print the uncertainty interval for the slope</span>
+<span class="nf">confint</span><span class="p">(</span><span class="n">my_lm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The model finds a significantly positive trend of 0.0059 year<span class="math notranslate nohighlight">\(^{-1}\)</span>. But is the model suitable for the data?
+To find that out, we should <strong>always have a look at the residuals</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">resid</span><span class="p">(</span><span class="n">my_lm</span><span class="p">))</span>
+<span class="nf">hist</span><span class="p">(</span><span class="nf">resid</span><span class="p">(</span><span class="n">my_lm</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The residuals violate both assumptions we made:</p>
+<ul class="simple">
+<li><p>They are not independent: we see clustering especially of negative residuals.</p></li>
+<li><p>They are not normally distributed: We see that their distribution is skewed.
+So, the model is inappropriate, <strong>it is wrong to use its results</strong>.</p></li>
+</ul>
+<p>We can plot the autocorrelation between the residuals:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">acf</span><span class="p">(</span><span class="nf">resid</span><span class="p">(</span><span class="n">my_lm</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that lag-1 and lag-2 autocorrelation are significantly positive.
+<strong>If we ignore this, the model may dramatically underestimate the uncertainty of the slope!</strong></p>
+<p>Next attempt: We assume that the residuals are autocorrelated in time. For irregular time series, we can use the continuous AR-1 autocorrelation and do a generalised least-squares fit:
+$<span class="math notranslate nohighlight">\(E(\varepsilon_n \cdot \varepsilon_{n+1}) = \sigma^2 \exp(-r(t_{n+1}-t_n))\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="s">&quot;nlme&quot;</span><span class="p">)</span>
+<span class="c1"># do generalised least-squares fit</span>
+<span class="n">my_gls</span> <span class="o">=</span> <span class="nf">gls</span><span class="p">(</span><span class="n">Cya</span><span class="o">~</span><span class="n">Age</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">Cyano_rec</span><span class="p">,</span><span class="n">correlation</span> <span class="o">=</span> <span class="nf">corCAR1</span><span class="p">(</span><span class="n">form</span><span class="o">=~</span><span class="n">Age</span><span class="p">))</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">my_gls</span><span class="p">)</span>
+<span class="c1"># plot the data and the fitted model</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Cya</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gls</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">))</span>
+<span class="c1"># print the uncertainty interval for the slope</span>
+<span class="nf">confint</span><span class="p">(</span><span class="n">my_gls</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the new residuals:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Three types of residuals:</span>
+<span class="c1"># &quot;response&quot;     = the full residuals epsilon_n</span>
+<span class="c1"># &quot;standardized&quot; = divided by standard deviation sigma</span>
+<span class="c1"># &quot;normalized&quot;   = divided by standard deviation sigma and corrected for assumed autocorrelation</span>
+<span class="n">my_residuals</span> <span class="o">=</span> <span class="nf">resid</span><span class="p">(</span><span class="n">my_gls</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;normalized&quot;</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">my_residuals</span><span class="p">)</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">my_residuals</span><span class="p">)</span>
+<span class="nf">acf</span><span class="p">(</span><span class="n">my_residuals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is a model we could publish if we are interested in a linear trend.</p>
+<p>But fitting a straight line is not optimal for matching the data. Let’s look at the plot again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the data and the fitted model</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Cya</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gls</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Doesn’t it look like there are basically two shifts: A rise in the 1920s to values around 0.7, and then another rise in the 1990s?</p>
+<p>We can actually find this out by using a “nonparametric model”.</p>
+</div>
+<div class="section" id="nonparametric-models">
+<h2>Nonparametric models<a class="headerlink" href="#nonparametric-models" title="Permalink to this headline">¶</a></h2>
+<p>In classical regression models, we prescribe the shape of the trend (linear, quadratic, …) and let the model estimate the coefficients only.</p>
+<p>In “nonparametric models”, the model shall also estimate the shape of the response. A good idea is to use “splines”.</p>
+</div>
+<div class="section" id="splines">
+<h2>Splines<a class="headerlink" href="#splines" title="Permalink to this headline">¶</a></h2>
+<p>Splines (=smooth polinomial lines) are a nice way to fit smooth lines through given data.</p>
+<p>Assume we have some points which we want to fit the data through:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x_values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="n">y_values</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span><span class="n">y_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could of course connect neighbouring points by straight lines, but that would not be smooth.
+The slope would change abruptly at these “knots”.</p>
+<p>An alternative is to define the slope at the knots as well and then to fit a third-order polynomial between every two knots.
+A third-order polynomial
+$<span class="math notranslate nohighlight">\( y = ax^3 + bx^2 + cx + d \)</span>$
+has four degrees of freedom, so it is uniquely defined by two y-values and two slopes at each end.</p>
+<p>the R function <strong>splinefunH()</strong> returns a function that fits the given knots and slopes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">slopes</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">-1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">-3</span><span class="p">)</span>
+<span class="n">my_splinefunction</span> <span class="o">=</span> <span class="nf">splinefunH</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_values</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="n">slopes</span><span class="p">)</span>  <span class="c1"># determine spline function</span>
+<span class="n">x_axis</span> <span class="o">=</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">to</span><span class="o">=</span><span class="m">3</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span>                                  <span class="c1"># define an x axis vector</span>
+<span class="n">my_spline</span> <span class="o">=</span> <span class="nf">my_splinefunction</span><span class="p">(</span><span class="n">x_axis</span><span class="p">)</span>                             <span class="c1"># apply the function to the x values to obtain y values</span>
+
+<span class="c1"># now plot the spline as line and the knots as points</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span><span class="n">my_spline</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span><span class="n">y_values</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="n">pch</span><span class="o">=</span><span class="m">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This type of spline with cubic polynomials between the knots is called “Hermite spline”.</p>
+<p>Assume we have some data which are scattered in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. A non-parametric model will automatically optimise the vertical position of the knot points and the slopes to find the line which fits your data best.</p>
+<p>Such a model is known as a <strong>Generalised Additive Model (GAM)</strong>. Here you can find a comprehensive book on how these are designed and applied:
+[Wood, S.N., 2017. Generalized additive models: an introduction with R. Chapman and Hall/CRC. <a class="reference external" href="https://www.taylorfrancis.com/books/9781498728348">https://www.taylorfrancis.com/books/9781498728348</a> ]</p>
+<p>You can use the function <strong>gam()</strong> from the R package <strong>mgcv</strong> to fit such a model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the library</span>
+<span class="nf">library</span><span class="p">(</span><span class="s">&quot;mgcv&quot;</span><span class="p">)</span>
+<span class="c1"># fit a gam model</span>
+<span class="n">x_values</span><span class="o">=</span><span class="nf">seq</span><span class="p">(</span><span class="m">1880</span><span class="p">,</span><span class="m">2020</span><span class="p">,</span><span class="n">by</span><span class="o">=</span><span class="m">20</span><span class="p">)</span>
+<span class="n">my_gam</span> <span class="o">=</span> <span class="nf">gam</span><span class="p">(</span><span class="n">Cya</span><span class="o">~</span><span class="nf">s</span><span class="p">(</span><span class="n">Age</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">8</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Cyano_rec</span><span class="p">,</span> <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">Age</span><span class="o">=</span><span class="n">x_values</span><span class="p">),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">,</span> <span class="n">sp</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+<span class="c1"># plot the data</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Cya</span><span class="p">)</span>
+<span class="c1"># plot the model</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">))</span>
+<span class="c1"># calculate the knots and plot them</span>
+<span class="n">y_values</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">my_gam</span><span class="p">,</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Age</span><span class="o">=</span><span class="n">x_values</span><span class="p">))</span>
+<span class="nf">points</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span><span class="n">y_values</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="n">pch</span><span class="o">=</span><span class="m">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The parameters (y_values and slopes) are stored in a parameter vector <span class="math notranslate nohighlight">\(\mathbf{\beta}\)</span>. This was optimised to maximise the likelihood <span class="math notranslate nohighlight">\(l(\mathbf{\beta})\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{y} = \beta_0 + s(\mathbf{x},\mathbf{\beta}) + \mathbf{\varepsilon} \]</div>
+<div class="math notranslate nohighlight">
+\[ \mathbf{y} = \beta_0 + \mathbf{X} \cdot \mathbf{\beta} + \mathbf{\varepsilon} \]</div>
+<p>The smoothness now depends on the number of knots we use. We can, however, ask the fitting function to produce a smoother spline.</p>
+<p>We want to punish if the second derivative (=curvature) gets too large, that is, we want to keep
+$<span class="math notranslate nohighlight">\( \int_{x} (s''(x,\mathbf{\beta}))^2 \)</span>$
+small.</p>
+<p>The smoothing parameter <strong>sp</strong> controls this.  It means that we will fit a restricted likelihood
+$<span class="math notranslate nohighlight">\( l_{restricted}(\mathbf{\beta}) = l(\mathbf{\beta}) - sp \cdot \mathbf{\beta} \cdot \mathbf{S} \cdot \mathbf{\beta} \)</span>$</p>
+<p>Let’s try different values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># fit three models</span>
+<span class="n">my_gam1</span> <span class="o">=</span> <span class="nf">gam</span><span class="p">(</span><span class="n">Cya</span><span class="o">~</span><span class="nf">s</span><span class="p">(</span><span class="n">Age</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">8</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Cyano_rec</span><span class="p">,</span> <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">Age</span><span class="o">=</span><span class="n">x_values</span><span class="p">),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">,</span> <span class="n">sp</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="n">my_gam2</span> <span class="o">=</span> <span class="nf">gam</span><span class="p">(</span><span class="n">Cya</span><span class="o">~</span><span class="nf">s</span><span class="p">(</span><span class="n">Age</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">8</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Cyano_rec</span><span class="p">,</span> <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">Age</span><span class="o">=</span><span class="n">x_values</span><span class="p">),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">,</span> <span class="n">sp</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="n">my_gam5</span> <span class="o">=</span> <span class="nf">gam</span><span class="p">(</span><span class="n">Cya</span><span class="o">~</span><span class="nf">s</span><span class="p">(</span><span class="n">Age</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">8</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Cyano_rec</span><span class="p">,</span> <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">Age</span><span class="o">=</span><span class="n">x_values</span><span class="p">),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">,</span> <span class="n">sp</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
+<span class="c1"># plot them all</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Cya</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">))</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam1</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam2</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam5</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, the method will choose an appropriate value for sp automatically.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># auto-select sp</span>
+<span class="n">my_gam_auto</span> <span class="o">=</span> <span class="nf">gam</span><span class="p">(</span><span class="n">Cya</span><span class="o">~</span><span class="nf">s</span><span class="p">(</span><span class="n">Age</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="m">8</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Cyano_rec</span><span class="p">,</span> <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">Age</span><span class="o">=</span><span class="n">x_values</span><span class="p">),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">)</span>
+<span class="c1"># plot all</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Cya</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">))</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam1</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam2</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam5</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam_auto</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="c1"># show chosen value</span>
+<span class="n">my_gam_auto</span><span class="o">$</span><span class="n">sp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We may also want to take temporal autocorrelation of the data into account. Then we need to choose a <strong>Generalised Additive Mixed Model (GAMM)</strong>.</p>
+<p>The fitting procedure is similar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">my_gamm</span> <span class="o">=</span> <span class="nf">gamm</span><span class="p">(</span><span class="n">Cya</span> <span class="o">~</span> <span class="nf">s</span><span class="p">(</span><span class="n">Age</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="m">8</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">Cyano_rec</span><span class="p">,</span> 
+               <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">Age</span><span class="o">=</span><span class="n">x_values</span><span class="p">),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">,</span> 
+               <span class="n">correlation</span> <span class="o">=</span> <span class="nf">corCAR1</span><span class="p">(</span><span class="n">form</span> <span class="o">=</span> <span class="o">~</span> <span class="n">Age</span><span class="p">))</span>
+<span class="c1"># print the summary of the gamm</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">my_gamm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that the model has two components:</p>
+<ul class="simple">
+<li><p><strong>lme</strong> contains the local mixed-effects model</p></li>
+<li><p><strong>gam</strong> contains the generalised additive model</p></li>
+</ul>
+<p>The actual GAMM is a combination of the two. We can use the <strong>gam</strong> model part as before and plot the estimated trend:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Cya</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gam_auto</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="nf">predict</span><span class="p">(</span><span class="n">my_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">,</span><span class="n">Cyano_rec</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <strong>lme</strong> part will tell us about the temporal autocorrelation which was estimated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">my_gamm</span><span class="o">$</span><span class="n">lme</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check the residuals for autocorrelation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">acf</span><span class="p">(</span><span class="nf">resid</span><span class="p">(</span><span class="n">my_gamm</span><span class="o">$</span><span class="n">lme</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;normalized&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>they don’t show a significant autocorrelation any more, so we may say the cAR1 model describes the autocorrelation well enough.</p>
+<p>The nonparametric fit also gives confidence intervals for the spline:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># do a prediction with standard error</span>
+<span class="n">my_prediction</span> <span class="o">=</span> <span class="nf">predict.gam</span><span class="p">(</span><span class="n">my_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">,</span><span class="n">se.fit</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">my_prediction</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see we have two entries: <strong>fit</strong> and <strong>se.fit</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot data and model</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Cya</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">)</span>
+
+<span class="c1"># plot 95% confidence interval</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span> <span class="o">+</span> <span class="m">1.96</span><span class="o">*</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">se.fit</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span> <span class="o">-</span> <span class="m">1.96</span><span class="o">*</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">se.fit</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even for the trend, we can see where it is significantly different from zero. We take the following functions for granted:</p>
+<p>[ <a class="reference external" href="https://www.fromthebottomoftheheap.net/2014/05/15/identifying-periods-of-change-with-gams/">https://www.fromthebottomoftheheap.net/2014/05/15/identifying-periods-of-change-with-gams/</a> ]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################</span>
+<span class="c1">## Functions for derivatives of GAM(M) models ##</span>
+<span class="c1">################################################</span>
+<span class="n">Deriv</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="m">200</span><span class="p">,</span> <span class="n">eps</span> <span class="o">=</span> <span class="m">1e-7</span><span class="p">,</span> <span class="n">newdata</span><span class="p">,</span> <span class="n">term</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">if</span><span class="p">(</span><span class="nf">inherits</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="s">&quot;gamm&quot;</span><span class="p">))</span>
+        <span class="n">mod</span> <span class="o">&lt;-</span> <span class="n">mod</span><span class="o">$</span><span class="n">gam</span>
+    <span class="n">m.terms</span> <span class="o">&lt;-</span> <span class="nf">attr</span><span class="p">(</span><span class="nf">terms</span><span class="p">(</span><span class="n">mod</span><span class="p">),</span> <span class="s">&quot;term.labels&quot;</span><span class="p">)</span>
+    <span class="nf">if</span><span class="p">(</span><span class="nf">missing</span><span class="p">(</span><span class="n">newdata</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">newD</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="nf">model.frame</span><span class="p">(</span><span class="n">mod</span><span class="p">)[,</span> <span class="n">m.terms</span><span class="p">,</span> <span class="n">drop</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">],</span>
+                       <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="nf">seq</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nf">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">length</span> <span class="o">=</span> <span class="n">n</span><span class="p">))</span>
+        <span class="nf">names</span><span class="p">(</span><span class="n">newD</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">m.terms</span>
+    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
+        <span class="n">newD</span> <span class="o">&lt;-</span> <span class="n">newdata</span>
+    <span class="p">}</span>
+    <span class="n">newDF</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">newD</span><span class="p">)</span> <span class="c1">## needs to be a data frame for predict</span>
+    <span class="n">X0</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">newDF</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;lpmatrix&quot;</span><span class="p">)</span>
+    <span class="n">newDF</span> <span class="o">&lt;-</span> <span class="n">newDF</span> <span class="o">+</span> <span class="n">eps</span>
+    <span class="n">X1</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">newDF</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;lpmatrix&quot;</span><span class="p">)</span>
+    <span class="n">Xp</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">X1</span> <span class="o">-</span> <span class="n">X0</span><span class="p">)</span> <span class="o">/</span> <span class="n">eps</span>
+    <span class="n">Xp.r</span> <span class="o">&lt;-</span> <span class="nf">NROW</span><span class="p">(</span><span class="n">Xp</span><span class="p">)</span>
+    <span class="n">Xp.c</span> <span class="o">&lt;-</span> <span class="nf">NCOL</span><span class="p">(</span><span class="n">Xp</span><span class="p">)</span>
+    <span class="c1">## dims of bs</span>
+    <span class="n">bs.dims</span> <span class="o">&lt;-</span> <span class="nf">sapply</span><span class="p">(</span><span class="n">mod</span><span class="o">$</span><span class="n">smooth</span><span class="p">,</span> <span class="s">&quot;[[&quot;</span><span class="p">,</span> <span class="s">&quot;bs.dim&quot;</span><span class="p">)</span> <span class="o">-</span> <span class="m">1</span>
+    <span class="c1">## number of smooth terms</span>
+    <span class="n">t.labs</span> <span class="o">&lt;-</span> <span class="nf">attr</span><span class="p">(</span><span class="n">mod</span><span class="o">$</span><span class="n">terms</span><span class="p">,</span> <span class="s">&quot;term.labels&quot;</span><span class="p">)</span>
+    <span class="c1">## match the term with the the terms in the model</span>
+    <span class="nf">if</span><span class="p">(</span><span class="o">!</span><span class="nf">missing</span><span class="p">(</span><span class="n">term</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">want</span> <span class="o">&lt;-</span> <span class="nf">grep</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="n">t.labs</span><span class="p">)</span>
+        <span class="nf">if</span><span class="p">(</span><span class="o">!</span><span class="nf">identical</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">want</span><span class="p">),</span> <span class="nf">length</span><span class="p">(</span><span class="n">term</span><span class="p">)))</span>
+            <span class="nf">stop</span><span class="p">(</span><span class="s">&quot;One or more &#39;term&#39;s not found in model!&quot;</span><span class="p">)</span>
+        <span class="n">t.labs</span> <span class="o">&lt;-</span> <span class="n">t.labs</span><span class="p">[</span><span class="n">want</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">nt</span> <span class="o">&lt;-</span> <span class="nf">length</span><span class="p">(</span><span class="n">t.labs</span><span class="p">)</span>
+    <span class="c1">## list to hold the derivatives</span>
+    <span class="n">lD</span> <span class="o">&lt;-</span> <span class="nf">vector</span><span class="p">(</span><span class="n">mode</span> <span class="o">=</span> <span class="s">&quot;list&quot;</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="n">nt</span><span class="p">)</span>
+    <span class="nf">names</span><span class="p">(</span><span class="n">lD</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">t.labs</span>
+    <span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="n">nt</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">Xi</span> <span class="o">&lt;-</span> <span class="n">Xp</span> <span class="o">*</span> <span class="m">0</span>
+        <span class="n">want</span> <span class="o">&lt;-</span> <span class="nf">grep</span><span class="p">(</span><span class="n">t.labs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nf">colnames</span><span class="p">(</span><span class="n">X1</span><span class="p">))</span>
+        <span class="n">Xi</span><span class="p">[,</span> <span class="n">want</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">Xp</span><span class="p">[,</span> <span class="n">want</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">&lt;-</span> <span class="n">Xi</span> <span class="o">%*%</span> <span class="nf">coef</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
+        <span class="n">df.sd</span> <span class="o">&lt;-</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">Xi</span> <span class="o">%*%</span> <span class="n">mod</span><span class="o">$</span><span class="n">Vp</span> <span class="o">*</span> <span class="n">Xi</span><span class="p">)</span><span class="o">^</span><span class="n">.</span><span class="m">5</span>
+        <span class="n">lD</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">deriv</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> <span class="n">se.deriv</span> <span class="o">=</span> <span class="n">df.sd</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nf">class</span><span class="p">(</span><span class="n">lD</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;Deriv&quot;</span>
+    <span class="n">lD</span><span class="o">$</span><span class="n">gamModel</span> <span class="o">&lt;-</span> <span class="n">mod</span>
+    <span class="n">lD</span><span class="o">$</span><span class="n">eps</span> <span class="o">&lt;-</span> <span class="n">eps</span>
+    <span class="n">lD</span><span class="o">$</span><span class="n">eval</span> <span class="o">&lt;-</span> <span class="n">newD</span> <span class="o">-</span> <span class="n">eps</span>
+    <span class="n">lD</span> <span class="c1">##return</span>
+<span class="p">}</span>
+                
+<span class="c1"># return those points where the derivative is 95% significant                       </span>
+<span class="n">signif_deriv</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">my_gamm</span><span class="p">,</span><span class="n">term</span><span class="p">,</span><span class="n">other_terms</span><span class="o">=</span><span class="kc">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">my_deriv</span> <span class="o">=</span> <span class="nf">Deriv</span><span class="p">(</span><span class="n">my_gamm</span><span class="p">)</span>
+    <span class="n">deriv_is_significant</span> <span class="o">=</span> <span class="nf">abs</span><span class="p">(</span><span class="n">my_deriv</span><span class="p">[[</span><span class="n">term</span><span class="p">]]</span><span class="o">$</span><span class="n">deriv</span><span class="p">)</span><span class="o">&gt;</span><span class="m">1.96</span><span class="o">*</span><span class="nf">abs</span><span class="p">(</span><span class="n">my_deriv</span><span class="p">[[</span><span class="n">term</span><span class="p">]]</span><span class="o">$</span><span class="n">se.deriv</span><span class="p">)</span>
+    <span class="n">x_values</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">V1</span> <span class="o">=</span> <span class="n">my_deriv</span><span class="o">$</span><span class="n">eval</span><span class="p">)</span>
+    <span class="nf">colnames</span><span class="p">(</span><span class="n">x_values</span><span class="p">)</span><span class="o">=</span><span class="n">term</span>
+    <span class="nf">if </span><span class="p">(</span><span class="o">!</span><span class="nf">is.null</span><span class="p">(</span><span class="n">other_terms</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nf">for </span><span class="p">(</span><span class="n">other_term</span> <span class="n">in</span> <span class="n">other_terms</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">x_values</span><span class="p">[,</span><span class="n">other_term</span><span class="p">]</span><span class="o">=</span><span class="m">0</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">y_values</span> <span class="o">=</span> <span class="nf">predict.gam</span><span class="p">(</span><span class="n">my_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">,</span><span class="n">newdata</span><span class="o">=</span><span class="n">x_values</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;terms&quot;</span><span class="p">)[,</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;s(&quot;</span><span class="p">,</span><span class="n">term</span><span class="p">,</span><span class="s">&quot;)&quot;</span><span class="p">)]</span>
+    <span class="n">y_values</span><span class="p">[</span><span class="o">!</span><span class="n">deriv_is_significant</span><span class="p">]</span><span class="o">=</span><span class="kc">NA</span>
+    <span class="n">y_values</span> <span class="o">=</span> <span class="n">y_values</span> <span class="o">+</span> <span class="n">my_gamm</span><span class="o">$</span><span class="n">gam</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+    <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_values</span><span class="p">[,</span><span class="n">term</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">y_values</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us calculate the points where the derivative is significantly different from zero:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate these points</span>
+<span class="n">significant_derivative_points</span> <span class="o">=</span> <span class="nf">signif_deriv</span><span class="p">(</span><span class="n">my_gamm</span><span class="p">,</span><span class="s">&quot;Age&quot;</span><span class="p">)</span>
+<span class="c1"># plot points and model estimate</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Cya</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span> <span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span> <span class="o">+</span> <span class="m">1.96</span><span class="o">*</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">se.fit</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">Cyano_rec</span><span class="o">$</span><span class="n">Age</span><span class="p">,</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span> <span class="o">-</span> <span class="m">1.96</span><span class="o">*</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">se.fit</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">,</span><span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="c1"># plot a thicker line (line width = 2) to show where the trend is significant</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">significant_derivative_points</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">?</span><span class="n">gamm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The model suggests two distinct increases of the cyanobacteria biomarker:</p>
+<ul class="simple">
+<li><p>between 1880 and 1940</p></li>
+<li><p>between 1970 and now</p></li>
+</ul>
+<p>But only in 1980-2015, the model has a 95% confidence that there was a systematic increasing trend.</p>
+</div>
+<div class="section" id="example-2-observed-surface-temperature-at-station-by31">
+<h2>Example 2: Observed surface temperature at station BY31<a class="headerlink" href="#example-2-observed-surface-temperature-at-station-by31" title="Permalink to this headline">¶</a></h2>
+<p>The ICES database contains observation data for Landsort Deep SST from the 19th century on. Can we find out if there is a long-term trend?</p>
+<p>Let us first load the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">icesdata</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../Data/sst_by31.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;;&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">icesdata</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">icesdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try to do a GAMM analysis as we did before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ices_gamm</span> <span class="o">=</span> <span class="nf">gamm</span><span class="p">(</span><span class="n">temperature</span> <span class="o">~</span> <span class="nf">s</span><span class="p">(</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="m">8</span><span class="p">)</span> <span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">icesdata</span><span class="p">,</span> 
+                 <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">decimalyear</span><span class="o">=</span><span class="n">x_values</span><span class="p">),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">temperature</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;violet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>That looks weird: Do we really see a cooling here?</p>
+<p>These data are irregular and have a pronounced seasonal cycle.</p>
+<p>You may find a <strong>seasonal observation bias</strong>:
+Assume you find a long-term trend - is that</p>
+<ul class="simple">
+<li><p>because it is actually getting warmer, or</p></li>
+<li><p>because you measured more often in summer?</p></li>
+</ul>
+<p>Let’s add a column <strong>season</strong> to the data frame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the year</span>
+<span class="n">icesdata</span><span class="o">$</span><span class="n">year</span> <span class="o">=</span> <span class="nf">floor</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">)</span>
+<span class="c1"># subtract it from decimalyear to get the season</span>
+<span class="n">icesdata</span><span class="o">$</span><span class="n">season</span> <span class="o">=</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span> <span class="o">-</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">year</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">icesdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now fit a statistical model like this:
+$<span class="math notranslate nohighlight">\( temperature = \beta_0 + s_1(decimalyear) + s_2(season) + \varepsilon \)</span>$</p>
+<p>which explicitly contains seasonality.</p>
+<p>This idea follows this online tutorial:
+[ <a class="reference external" href="https://www.fromthebottomoftheheap.net/2014/05/09/modelling-seasonal-data-with-gam/">https://www.fromthebottomoftheheap.net/2014/05/09/modelling-seasonal-data-with-gam/</a> ]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ices_gamm</span> <span class="o">=</span> <span class="nf">gamm</span><span class="p">(</span><span class="n">temperature</span> <span class="o">~</span> <span class="nf">s</span><span class="p">(</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cr&quot;</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="m">8</span><span class="p">)</span> <span class="o">+</span> <span class="nf">s</span><span class="p">(</span><span class="n">season</span><span class="p">,</span> <span class="n">bs</span><span class="o">=</span><span class="s">&quot;cc&quot;</span><span class="p">,</span><span class="n">k</span><span class="o">=</span><span class="m">12</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">icesdata</span><span class="p">,</span> 
+                 <span class="n">knots</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">decimalyear</span><span class="o">=</span><span class="n">x_values</span><span class="p">,</span> <span class="n">season</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)),</span> <span class="n">optimMethod</span><span class="o">=</span><span class="s">&quot;ML&quot;</span><span class="p">,</span> 
+                 <span class="n">correlation</span> <span class="o">=</span> <span class="nf">corCAR1</span><span class="p">(</span><span class="n">form</span> <span class="o">=</span> <span class="o">~</span> <span class="n">decimalyear</span><span class="o">|</span><span class="n">year</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we want to plot the temperature trend together with the data. To do so, we have to make a prediction term by term:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="o">$</span><span class="n">coefficients</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the intercept - it is the first of the coefficients</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+<span class="n">intercept</span>
+
+<span class="c1"># predict the terms one by one</span>
+<span class="n">my_prediction</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ices_gamm</span><span class="o">$</span><span class="n">gam</span><span class="p">,</span><span class="n">se.fit</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;terms&quot;</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">my_prediction</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the temperature from the first columm</span>
+<span class="n">pred_temperature</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
+
+<span class="c1"># get minimum and maximum temperature</span>
+<span class="n">pred_temperature_min</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span> <span class="o">-</span> <span class="m">1.96</span><span class="o">*</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">se.fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
+<span class="n">pred_temperature_max</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">my_prediction</span><span class="o">$</span><span class="n">fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span> <span class="o">+</span> <span class="m">1.96</span><span class="o">*</span><span class="n">my_prediction</span><span class="o">$</span><span class="n">se.fit</span><span class="p">[,</span><span class="m">1</span><span class="p">]</span>
+
+<span class="c1"># do the plot</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">temperature</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature_min</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature_max</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Where is the trend significant?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">significant_derivative_points</span> <span class="o">=</span> <span class="nf">signif_deriv</span><span class="p">(</span><span class="n">ices_gamm</span><span class="p">,</span><span class="n">term</span><span class="o">=</span><span class="s">&quot;decimalyear&quot;</span><span class="p">,</span><span class="n">other_terms</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;season&quot;</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">icesdata</span><span class="o">$</span><span class="n">temperature</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature_min</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">icesdata</span><span class="o">$</span><span class="n">decimalyear</span><span class="p">,</span> <span class="n">pred_temperature_max</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">significant_derivative_points</span><span class="p">,</span> <span class="n">lwd</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="incomplete_time_series_1.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Analysis of incomplete time series - Part 1</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Florian Börgel<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

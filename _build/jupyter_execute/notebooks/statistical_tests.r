@@ -61,4 +61,4 @@ sd(temperatures2)
 
 ?fisher.test
 
-fisher.test(temperatures1,temperatures2)
+

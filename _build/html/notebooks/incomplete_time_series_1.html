@@ -1,0 +1,829 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis of incomplete time series - Part 1 &#8212; Baltic Earth Winter School</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analysis of incomplete time series - Part 2" href="incomplete_time_series_2.html" />
+    <link rel="prev" title="Introduction to wavelet analysis" href="Wavelet_lecture.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo_baltic_earth.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Baltic Earth Winter School</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/intro.html">
+   Intro
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../markdown/content.html">
+   Content in Jupyter Book
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_r_1.html">
+     Introduction into R - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="intro_r_2.html">
+     Introduction into R - Part 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="statistical_tests.html">
+     Statistical tests in R
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Wavelet_lecture.html">
+     Introduction to wavelet analysis
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Analysis of incomplete time series - Part 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="incomplete_time_series_2.html">
+     Analysis of incomplete time series - Part 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/incomplete_time_series_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/bwes/main?urlpath=lab/tree/./notebooks/incomplete_time_series_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-swinoujscie-monthly-sea-level">
+   Example: Swinoujscie monthly sea level
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-here-is-what-you-should-not-do-span">
+     <span style="color:red">
+      Here is what you should not do:
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-iterative-adaptive-approach">
+     The Iterative Adaptive Approach
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#discrete-fourier-tranform">
+       Discrete Fourier tranform
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#missing-values-in-mathbf-y">
+       Missing values in
+       <span class="math notranslate nohighlight">
+        \(\mathbf{y}\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-vanicek-method-or-lomb-scargle-periodogram">
+       The Vaniček method or Lomb-Scargle Periodogram
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-iaa-method">
+       The IAA method
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reconstruction-of-missing-values-by-the-help-of-proxy-data">
+   Reconstruction of missing values by the help of proxy data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-dineof-method">
+     The DINEOF method
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="analysis-of-incomplete-time-series-part-1">
+<h1>Analysis of incomplete time series - Part 1<a class="headerlink" href="#analysis-of-incomplete-time-series-part-1" title="Permalink to this headline">¶</a></h1>
+<p>There are three types of time series:</p>
+<ul class="simple">
+<li><p>regular, complete time series</p></li>
+<li><p>regular but incomplete time series</p></li>
+<li><p>irregular time series</p></li>
+</ul>
+<p>All of these require different analysis methods.</p>
+<p>We will first focus on regular but incomplete time series, and later move on to irregular time series.</p>
+<div class="section" id="example-swinoujscie-monthly-sea-level">
+<h2>Example: Swinoujscie monthly sea level<a class="headerlink" href="#example-swinoujscie-monthly-sea-level" title="Permalink to this headline">¶</a></h2>
+<p>The tide gauge in Swinoujscie has produced one of the longest sea level records worldwide, data on relative sea level exist from 1811 onwards. Such long time series are extremely valuable for attributing sea level rise to climate change.</p>
+<p>Monthly sea level data from stations around the world can be downloaded from <a class="reference external" href="https://www.psmsl.org">https://www.psmsl.org</a>.
+For higher temporal resolution (e.g. for research on extreme sea levels), the first choice would be <a class="reference external" href="https://gesla.org/">https://gesla.org/</a>.</p>
+<p>Let us plot the PSMSL data for Swinoujscie:</p>
+<div style="text-align: right"> <span style="color:red">replace %%%%%%%%%%</span></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># read in Swinoujsce data</span>
+<span class="n">sldata</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;../Data/sealevel/swinoujscie.rlrdata&quot;</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;;&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="c1"># select first two columns only</span>
+<span class="n">sldata</span> <span class="o">=</span> <span class="n">sldata</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">]</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">sldata</span><span class="p">)</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;year&quot;</span><span class="p">,</span><span class="s">&quot;swinoujscie&quot;</span><span class="p">)</span>
+<span class="c1"># set negative values to missing values</span>
+<span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">[</span><span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="o">&lt;</span><span class="m">0</span><span class="p">]</span><span class="o">=</span><span class="kc">NA</span>
+<span class="c1"># plot the data</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">sldata</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/incomplete_time_series_1_2_0.png" src="../_images/incomplete_time_series_1_2_0.png" />
+</div>
+</div>
+<p>We see that there is a larger gap starting during the second world war.</p>
+<p>Assume we want to estimate the Fourier power spectrum of this time series in the 20th century.
+Let’s try it straightforward:</p>
+<div style="text-align: right"> <span style="color:red">replace %%%%%%%%%%</span></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># select 20th century only</span>
+<span class="n">sldata</span> <span class="o">=</span> <span class="n">sldata</span><span class="p">[(</span><span class="n">sldata</span><span class="o">$</span><span class="n">year</span><span class="o">&gt;=</span><span class="m">1900</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">year</span><span class="o">&lt;</span><span class="m">2000</span><span class="p">),]</span>
+<span class="c1"># remove the temporal mean</span>
+<span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span> <span class="o">=</span> <span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span> <span class="o">-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="c1"># try fft</span>
+<span class="n">spectrum</span> <span class="o">=</span> <span class="nf">fft</span><span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">spectrum</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [1] NA NA NA NA NA NA NA NA NA NA
+</pre></div>
+</div>
+</div>
+</div>
+<p>This didn’t work: The FFT algorithm cannot handle missing values, so it gave only NA as output.</p>
+<div class="section" id="span-style-color-red-here-is-what-you-should-not-do-span">
+<h3><span style="color:red">Here is what you should not do:</span><a class="headerlink" href="#span-style-color-red-here-is-what-you-should-not-do-span" title="Permalink to this headline">¶</a></h3>
+<p>We could try to set the missing values to zero and compute the spectrum:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sldata_filled</span> <span class="o">=</span> <span class="n">sldata</span>
+<span class="n">sldata_filled</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">[</span><span class="nf">is.na</span><span class="p">(</span><span class="n">sldata_filled</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">)]</span> <span class="o">=</span> <span class="m">0</span>
+<span class="n">spectrum_filled</span> <span class="o">=</span> <span class="nf">fft</span><span class="p">(</span><span class="n">sldata_filled</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">spectrum_filled</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/incomplete_time_series_1_6_0.png" src="../_images/incomplete_time_series_1_6_0.png" />
+</div>
+</div>
+<p>Our goal is to get a good estimate for the spectrum of the full time series without the gap.
+The following study compared different methods for this purpose:</p>
+<p><em>[Babu, Prabhu. 2012. Spectral Analysis of Nonuniformly Sampled Data and Applications. Uppsala universitet. <a class="reference external" href="https://uu.diva-portal.org/smash/get/diva2:549963/FULLTEXT01.pdf">https://uu.diva-portal.org/smash/get/diva2:549963/FULLTEXT01.pdf</a>]</em></p>
+<p>The IAA method (iterative adaptive approach) performed best results. This is the reference:</p>
+<p><em>[T. Yardibi, J. Li, P. Stoica, M. Xue,
+and A. B. Baggeroer. Iterative
+adaptive approach for sparse
+signal representation with sensing
+applications. IEEE Transactions on
+Aerospace and Electronic
+Systems, 2009, to appear.]</em></p>
+<p>but in fact it never appeared.
+The following code implements the IAA algorithm which is described on page 34 of the Babu dissertation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">iaa</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="m">10</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1"># get length of time series</span>
+  <span class="n">M</span> <span class="o">=</span> <span class="nf">length</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+  <span class="c1"># check where data are present</span>
+  <span class="n">signal_present</span> <span class="o">=</span> <span class="nf">is.finite</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+  <span class="n">N</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">signal_present</span><span class="p">)</span>
+  <span class="c1"># calculate times where data are present, assuming T=1</span>
+  <span class="n">times</span> <span class="o">=</span> <span class="p">(</span><span class="nf">seq_len</span><span class="p">(</span><span class="n">M</span><span class="p">)</span><span class="m">-1</span><span class="p">)</span><span class="o">/</span><span class="n">M</span>
+  <span class="n">times</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="n">signal_present</span><span class="p">]</span>
+  <span class="n">values</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="n">signal_present</span><span class="p">]</span>
+  <span class="c1"># calculate Nyquist frequency 2*pi/T but T=1</span>
+  <span class="n">omega1</span> <span class="o">=</span> <span class="m">2</span><span class="o">*</span><span class="kc">pi</span>
+  <span class="c1"># for each frequency M, define a fourier vector based on the times</span>
+  <span class="n">a</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">nrow</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">ncol</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+  <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="n">M</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">a</span><span class="p">[,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="nf">exp</span><span class="p">(</span><span class="m">1i</span><span class="o">*</span><span class="p">(</span><span class="n">j</span><span class="m">-1</span><span class="p">)</span><span class="o">*</span><span class="n">omega1</span><span class="o">*</span><span class="n">times</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c1"># initialize R matrix with identity matrix</span>
+  <span class="n">R</span> <span class="o">=</span> <span class="nf">diag</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+  <span class="n">beta</span> <span class="o">=</span> <span class="nf">rep</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+  <span class="c1"># now do the iteration loop</span>
+  <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="n">steps</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;iaa &quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="n">steps</span><span class="p">))</span>
+    <span class="c1"># calculate beta</span>
+    <span class="n">tempvec</span> <span class="o">=</span> <span class="nf">solve</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">numerator</span> <span class="o">=</span> <span class="nf">apply</span><span class="p">(</span><span class="nf">Conj</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">tempvec</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">sum</span><span class="p">)</span>
+    <span class="n">tempvec</span> <span class="o">=</span> <span class="nf">solve</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="n">M</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">denominator</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="nf">Conj</span><span class="p">(</span><span class="n">a</span><span class="p">[,</span><span class="n">j</span><span class="p">])</span><span class="o">*</span><span class="n">tempvec</span><span class="p">[,</span><span class="n">j</span><span class="p">])</span>
+      <span class="n">beta</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">numerator</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">/</span><span class="n">denominator</span>
+    <span class="p">}</span>
+    <span class="c1"># calculate R</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="nf">diag</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">j</span> <span class="n">in</span> <span class="nf">seq_len</span><span class="p">(</span><span class="n">M</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">R</span> <span class="o">=</span> <span class="n">R</span> <span class="o">+</span> <span class="nf">abs</span><span class="p">(</span><span class="n">beta</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">^</span><span class="m">2</span><span class="o">*</span><span class="n">a</span><span class="p">[,</span><span class="n">j</span><span class="p">]</span><span class="o">%*%</span><span class="nf">t</span><span class="p">(</span><span class="nf">Conj</span><span class="p">(</span><span class="n">a</span><span class="p">[,</span><span class="n">j</span><span class="p">]))</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nf">return</span><span class="p">(</span><span class="n">beta</span><span class="o">*</span><span class="n">M</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The disadvantage is that it is rather slow (this one should take 5 minutes), so let us start it before we look at what it does.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;calculating ...&quot;</span><span class="p">)</span>
+<span class="n">spectrum</span> <span class="o">=</span> <span class="nf">iaa</span><span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">,</span><span class="n">steps</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;done.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;calculating ...&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-iterative-adaptive-approach">
+<h3>The Iterative Adaptive Approach<a class="headerlink" href="#the-iterative-adaptive-approach" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="discrete-fourier-tranform">
+<h4>Discrete Fourier tranform<a class="headerlink" href="#discrete-fourier-tranform" title="Permalink to this headline">¶</a></h4>
+<p>A discrete Fourier Transform of a vector <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> (of length <span class="math notranslate nohighlight">\(N\)</span>) can be described by the multiplication of the Fourier matrix:
+$<span class="math notranslate nohighlight">\( \tilde{\mathbf{y}} = \mathbf{F} \cdot \mathbf{y}\)</span><span class="math notranslate nohighlight">\(
+The Fourier matrix is defined as
+\)</span><span class="math notranslate nohighlight">\( \mathbf{F} = \begin{pmatrix}  
+1 &amp; 1 &amp; 1 &amp; \dots &amp; 1 \\
+1 &amp; \exp(i\omega_0t) &amp; \exp(2i\omega_0t)&amp; \dots &amp; \exp((N-1)i\omega_0t) \\
+1 &amp; \exp(2i\omega_0t) &amp; \exp(4i\omega_0t)&amp; \dots &amp; \exp(2(N-1)i\omega_0t) \\
+\dots &amp; \dots &amp; \dots &amp; &amp; \dots \\
+1 &amp; \exp((N-1)i\omega_0t) &amp; \exp(2(N-1)i\omega_0t)&amp; \dots &amp; \exp((N-1)^2i\omega_0t) 
+\end{pmatrix} \)</span><span class="math notranslate nohighlight">\(
+with 
+\)</span><span class="math notranslate nohighlight">\( \omega_0 = 2\pi/N \)</span><span class="math notranslate nohighlight">\(
+The inverse transformation is then simply
+\)</span><span class="math notranslate nohighlight">\( \mathbf{y} = \mathbf{F}^{-1} \cdot \mathbf{\tilde{y}}\)</span>$</p>
+<p>and the trick is that the inverse of the Fourier matrix can be easily calculated just from the complex conjugate:
+$<span class="math notranslate nohighlight">\( \mathbf{F}^{-1} = \frac{1}{N} \mathbf{F}^* = \begin{pmatrix}  
+1 &amp; 1 &amp; 1 &amp; \dots &amp; 1 \\
+1 &amp; \exp(-i\omega_0t) &amp; \exp(-2i\omega_0t)&amp; \dots &amp; \exp(-(N-1)i\omega_0t) \\
+1 &amp; \exp(-2i\omega_0t) &amp; \exp(-4i\omega_0t)&amp; \dots &amp; \exp(-2(N-1)i\omega_0t) \\
+\dots &amp; \dots &amp; \dots &amp; &amp; \dots \\
+1 &amp; \exp(-(N-1)i\omega_0t) &amp; \exp(-2(N-1)i\omega_0t)&amp; \dots &amp; \exp(-(N-1)^2i\omega_0t) 
+\end{pmatrix} \)</span>$</p>
+<p>So, transforming back and forth gives the original vector:
+$<span class="math notranslate nohighlight">\( \mathbf{y} = \frac{1}{N} \mathbf{F}^* \cdot \mathbf{F} \cdot \mathbf{y}\)</span>$</p>
+</div>
+<div class="section" id="missing-values-in-mathbf-y">
+<h4>Missing values in <span class="math notranslate nohighlight">\(\mathbf{y}\)</span><a class="headerlink" href="#missing-values-in-mathbf-y" title="Permalink to this headline">¶</a></h4>
+<p>When values in <span class="math notranslate nohighlight">\(y\)</span> are missing, we can treat it as a shorter vector <span class="math notranslate nohighlight">\(\mathbf{y}'\)</span> of length <span class="math notranslate nohighlight">\(&lt;N\)</span>.
+We can then remove some columns in the Fourier matrix and still calculate the spectrum of the full length <span class="math notranslate nohighlight">\(N\)</span>:
+$<span class="math notranslate nohighlight">\(\tilde{\mathbf{y}}_{simple} = \mathbf{F}' \cdot \mathbf{y}'\)</span><span class="math notranslate nohighlight">\(
+This gives the same result as setting the missing values to zero.
+If we try to back-transform, however, we do not succeed:
+\)</span><span class="math notranslate nohighlight">\(\mathbf{y}' \neq \frac{1}{N} \mathbf{F}'^T{}^* \cdot \mathbf{F}' \cdot \mathbf{y}'\)</span><span class="math notranslate nohighlight">\(
+(due to the matrix dimensions we need to transpose, which didn't matter before because \)</span>\mathbf{F}$ was symmetric)</p>
+</div>
+<div class="section" id="the-vanicek-method-or-lomb-scargle-periodogram">
+<h4>The Vaniček method or Lomb-Scargle Periodogram<a class="headerlink" href="#the-vanicek-method-or-lomb-scargle-periodogram" title="Permalink to this headline">¶</a></h4>
+<p>The idea is to correct for this mismatch.
+We can calculate the matrix which causes the deviation beforehand:
+$<span class="math notranslate nohighlight">\(\mathbf{R} =  \mathbf{F}'^T{}^* \cdot \mathbf{F}' \)</span><span class="math notranslate nohighlight">\(
+and then apply \)</span>\mathbf{R}^{-1}<span class="math notranslate nohighlight">\( to \)</span>\mathbf{y}<span class="math notranslate nohighlight">\( before calculating the spectrum:
+\)</span><span class="math notranslate nohighlight">\(\tilde{\mathbf{y}}_{LS} = \mathbf{F}' \cdot \mathbf{R}^{-1} \cdot \mathbf{y}'\)</span><span class="math notranslate nohighlight">\(
+The term \)</span>\tilde{\mathbf{y}}<em>{LS}<span class="math notranslate nohighlight">\( is called the Lomb-Scargle Periodogram and is used in astronomy to precisely estimate cycle lengths.
+The advantage is that we get the correct result if we back-transform:
+\)</span><span class="math notranslate nohighlight">\(\mathbf{y}' = \frac{1}{N} \mathbf{F}'^T{}^* \cdot \tilde{\mathbf{y}}_{LS} = \frac{1}{N} \mathbf{F}'^T{}^* \cdot \mathbf{F}' \cdot \mathbf{R}^{-1} \cdot \mathbf{y}'\)</span><span class="math notranslate nohighlight">\(
+The LS peridogram \)</span>\tilde{\mathbf{y}}</em>{LS}<span class="math notranslate nohighlight">\( is already a better estimate for the full spectrum \)</span>\tilde{\mathbf{y}}<span class="math notranslate nohighlight">\( of the complete time series than \)</span>\tilde{\mathbf{y}}_{simple}$, but we can do better.</p>
+</div>
+<div class="section" id="the-iaa-method">
+<h4>The IAA method<a class="headerlink" href="#the-iaa-method" title="Permalink to this headline">¶</a></h4>
+<p>The method aims at estimating a better repair matrix <span class="math notranslate nohighlight">\(\mathbf{\hat{R}}\)</span>.
+We look at the single rows of the Fourier matrix. Let us define the row <span class="math notranslate nohighlight">\(k\)</span> of the Fourier matrix <span class="math notranslate nohighlight">\(\mathbf{F}'\)</span> as:
+$<span class="math notranslate nohighlight">\(\mathbf{f}_k = \left(1, \exp(ki\omega_0 t), \exp(2ki\omega_0 t), \dots, \exp((N-1)ki\omega_0 t) \right)\)</span>$
+Then the algorithm works iteratively.</p>
+<ul class="simple">
+<li><p>start with <span class="math notranslate nohighlight">\(\mathbf{\hat{R}}=\mathbf{I}\)</span></p></li>
+<li><p>then repeat:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\tilde{\mathbf{y}}_{IAA} \, := \, \frac{\mathbf{f}_k \cdot \mathbf{\hat{R}}^{-1} \cdot \mathbf{y}'}{\mathbf{f}_k \cdot \mathbf{R}^{-1} \cdot \mathbf{f}_k^*{}^T}\)</span> (estimate the spectrum)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{\hat{R}} \, := \, \sum_k | \tilde{y}_{IAA,k} |^2  \mathbf{f}_k^*{}^T \cdot \mathbf{f}_k\)</span> (based on the spectrum, modify the repair matrix)</p></li>
+</ul>
+</li>
+</ul>
+<p>It turns out that the estimated spectrum <span class="math notranslate nohighlight">\(\tilde{\mathbf{y}}_{IAA}\)</span> is mostly a good approximate for the full spectrum <span class="math notranslate nohighlight">\(\tilde{\mathbf{y}}\)</span>.</p>
+<p>Let us plot the spectrum now:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="nf">abs</span><span class="p">(</span><span class="n">spectrum_filled</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see different peaks in the spectrum. The peak at <span class="math notranslate nohighlight">\(n=100\)</span> is e.g. the annual cycle, since the time series is 100 years long.</p>
+<p>The simple method underestimates these peaks: In the gap where we filled in the zeros, the annual cycle is missing.</p>
+<p>The IAA method instead practically fills the gap with values which fit to the rest of the spectrum. Let’s see what happens if we back-transform it:</p>
+<div style="text-align: right"> <span style="color:red">replace %%%%%%%%%%</span></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># reconstruct the spectrum</span>
+<span class="n">N</span><span class="o">=</span><span class="nf">length</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
+<span class="n">reconstruction</span> <span class="o">=</span> <span class="nf">fft</span><span class="p">(</span><span class="n">spectrum</span><span class="p">,</span><span class="n">inverse</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">reconstruction</span> <span class="o">=</span> <span class="nf">Re</span><span class="p">(</span><span class="n">reconstruction</span><span class="p">)</span>
+<span class="c1"># plot the result and the original data</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">year</span><span class="p">,</span><span class="n">reconstruction</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="o">%%%%%%%%%%</span><span class="p">,</span><span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The green values shouldn’t bee seen as a reconstruction of the missing data, though.</p>
+<p>The IAA method is also nice for complete but non-periodic time series to avoid the Fourier signal of the hard jump between beginning and end of the time series. Just add a few missing values after the time series to avoid this hard jump.</p>
+</div>
+</div>
+</div>
+<div class="section" id="reconstruction-of-missing-values-by-the-help-of-proxy-data">
+<h2>Reconstruction of missing values by the help of proxy data<a class="headerlink" href="#reconstruction-of-missing-values-by-the-help-of-proxy-data" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes proxy data can help to get an approximate value for the missing data, which is better than no information.
+For example, other tide gauge stations in the Baltic Sea may be related to the one in Swinoujscie. Let us load data from some more tide gauges and put them into a matrix.</p>
+<div style="text-align: right"> <span style="color:red">replace %%%%%%%%%%</span></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">stations</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;swinoujscie&quot;</span><span class="p">,</span><span class="s">&quot;copenhagen&quot;</span><span class="p">,</span><span class="s">&quot;helsinki&quot;</span><span class="p">,</span><span class="s">&quot;stockholm&quot;</span><span class="p">,</span><span class="s">&quot;warnemuende&quot;</span><span class="p">)</span>
+<span class="c1"># initialise a matrix with NA values</span>
+<span class="n">sl_matrix</span> <span class="o">=</span> <span class="nf">matrix</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="m">12</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">stations</span><span class="p">))</span>
+<span class="c1"># loop over the stations</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">seq_along</span><span class="p">(</span><span class="n">stations</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1"># read in the tide gauge data</span>
+    <span class="n">stationdata</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;../Data/sealevel/&quot;</span><span class="p">,</span><span class="n">stations</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s">&quot;.rlrdata&quot;</span><span class="p">),</span><span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;;&quot;</span><span class="p">,</span><span class="n">header</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+    <span class="c1"># select first two columns only</span>
+    <span class="n">stationdata</span> <span class="o">=</span> <span class="n">stationdata</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">2</span><span class="p">]</span>
+    <span class="nf">colnames</span><span class="p">(</span><span class="n">stationdata</span><span class="p">)</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;year&quot;</span><span class="p">,</span><span class="s">&quot;sealevel&quot;</span><span class="p">)</span>
+    <span class="c1"># set negative values to missing values</span>
+    <span class="n">stationdata</span><span class="o">$</span><span class="n">sealevel</span><span class="p">[</span><span class="n">stationdata</span><span class="o">$</span><span class="n">sealevel</span> <span class="o">&lt;</span><span class="p">(</span><span class="m">-500</span><span class="p">)]</span><span class="o">=</span><span class="kc">NA</span>
+    <span class="c1"># select 20th century only</span>
+    <span class="n">stationdata</span> <span class="o">=</span> <span class="n">stationdata</span><span class="p">[(</span><span class="n">stationdata</span><span class="o">$</span><span class="n">year</span><span class="o">&gt;=</span><span class="m">1900</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">stationdata</span><span class="o">$</span><span class="n">year</span><span class="o">&lt;</span><span class="m">2000</span><span class="p">),]</span>
+    <span class="c1"># remove the mean</span>
+    <span class="n">stationdata</span><span class="o">$</span><span class="n">sealevel</span> <span class="o">=</span> <span class="n">stationdata</span><span class="o">$</span><span class="n">sealevel</span> <span class="o">-</span> <span class="nf">mean</span><span class="p">(</span><span class="n">stationdata</span><span class="o">$</span><span class="n">sealevel</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+    <span class="c1"># put the data into the matrix</span>
+    <span class="n">sl_matrix</span><span class="p">[,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">stationdata</span><span class="o">$</span><span class="n">sealevel</span>
+<span class="p">}</span>
+<span class="c1"># plot the data as a matrix</span>
+<span class="nf">image</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">stationdata</span><span class="o">$</span><span class="n">year</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="nf">seq_along</span><span class="p">(</span><span class="n">stations</span><span class="p">),</span><span class="n">z</span><span class="o">=</span><span class="n">sl_matrix</span><span class="p">)</span>
+<span class="c1"># write station names to the right</span>
+<span class="nf">axis</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="n">at</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="nf">toupper</span><span class="p">(</span><span class="nf">substr</span><span class="p">(</span><span class="n">stations</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/incomplete_time_series_1_17_0.png" src="../_images/incomplete_time_series_1_17_0.png" />
+</div>
+</div>
+<p>We see that there is some similarity between the stations which we could use to guess the Swinoujscie data.</p>
+<p>There are plenty of ways to do this. Guessing data from proxy information is a huge topic in the field of artificial intelligence.</p>
+<p>As an example, we use a nicely simple method: Data-interpolating EOFs (DINEOF). The method is described here:</p>
+<p><em>Beckers, J.M., Rixen, M., 2003. EOF Calculations and Data Filling from Incomplete Oceanographic Datasets. J. Atmos. Oceanic Technol. 20, 1839–1856. <a class="reference external" href="https://journals.ametsoc.org/doi/pdf/10.1175/1520-0426%282003%29020%3C1839%3AECADFF%3E2.0.CO%3B2">https://journals.ametsoc.org/doi/pdf/10.1175/1520-0426(2003)020&lt;1839:ECADFF&gt;2.0.CO;2</a></em></p>
+<div class="section" id="the-dineof-method">
+<h3>The DINEOF method<a class="headerlink" href="#the-dineof-method" title="Permalink to this headline">¶</a></h3>
+<p>The method is rather simple:</p>
+<ul class="simple">
+<li><p>Use zero as initial guess for the data in the gaps</p></li>
+<li><p>Calculate the first EOF of the dataset</p></li>
+<li><p>Use the values of this EOF estimate as a better guess in the gaps</p></li>
+<li><p>Estimate the first EOF again, repeat this until first EOF converges</p></li>
+<li><p>Now continue with the second EOF etc: For each EOF we iterate and improve the estimates until it converges</p></li>
+<li><p>Our reconstruction for the data in the gaps are then the sum of <span class="math notranslate nohighlight">\(n\)</span> EOFs.</p></li>
+</ul>
+<p>Here is an implementation based on the <strong>sinkr</strong> R package:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dineof</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">Xo</span><span class="p">,</span> <span class="n">n.max</span><span class="o">=</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">ref.pos</span><span class="o">=</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">delta.rms</span><span class="o">=</span><span class="m">1e-5</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&quot;svd&quot;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">replace_ref</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span> <span class="n">punish_large_guesses</span><span class="o">=</span><span class="m">0</span><span class="p">){</span>
+  
+  <span class="nf">if</span><span class="p">(</span><span class="nf">is.null</span><span class="p">(</span><span class="n">n.max</span><span class="p">)){</span>
+    <span class="n">n.max</span><span class="o">=</span><span class="nf">dim</span><span class="p">(</span><span class="n">Xo</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span>
+  <span class="p">}</span>	
+  
+  <span class="n">na.true</span> <span class="o">&lt;-</span> <span class="nf">which</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Xo</span><span class="p">))</span>
+  <span class="n">na.false</span> <span class="o">&lt;-</span> <span class="nf">which</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">Xo</span><span class="p">))</span>
+  <span class="nf">if</span><span class="p">(</span><span class="nf">is.null</span><span class="p">(</span><span class="n">ref.pos</span><span class="p">))</span> <span class="n">ref.pos</span> <span class="o">&lt;-</span> <span class="nf">sample</span><span class="p">(</span><span class="n">na.false</span><span class="p">,</span> <span class="nf">max</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">0.01</span><span class="o">*</span><span class="nf">length</span><span class="p">(</span><span class="n">na.false</span><span class="p">)))</span>
+  
+  <span class="n">Xa</span> <span class="o">&lt;-</span> <span class="nf">replace</span><span class="p">(</span><span class="n">Xo</span><span class="p">,</span> <span class="n">na.true</span><span class="p">,</span> <span class="m">0</span><span class="p">)</span>
+  <span class="nf">if </span><span class="p">(</span><span class="n">replace_ref</span><span class="p">)</span> <span class="p">{</span><span class="n">Xa</span> <span class="o">&lt;-</span> <span class="nf">replace</span><span class="p">(</span><span class="n">Xa</span><span class="p">,</span> <span class="n">ref.pos</span><span class="p">,</span> <span class="m">0</span><span class="p">)}</span>
+  <span class="n">rms.prev</span> <span class="o">&lt;-</span> <span class="kc">Inf</span>
+  <span class="n">rms.now</span> <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">Xo</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">))</span>
+  <span class="n">n.eof</span> <span class="o">&lt;-</span> <span class="m">1</span>
+  <span class="n">RMS</span> <span class="o">&lt;-</span> <span class="n">rms.now</span>
+  <span class="n">NEOF</span> <span class="o">&lt;-</span> <span class="n">n.eof</span>
+  <span class="n">Xa.best</span> <span class="o">&lt;-</span> <span class="n">Xa</span>
+  <span class="n">n.eof.best</span> <span class="o">&lt;-</span> <span class="n">n.eof</span>	
+  <span class="nf">while</span><span class="p">(</span><span class="n">rms.prev</span> <span class="o">-</span> <span class="n">rms.now</span> <span class="o">&gt;</span> <span class="n">delta.rms</span> <span class="o">&amp;</span> <span class="n">n.max</span> <span class="o">&gt;</span> <span class="n">n.eof</span><span class="p">){</span> <span class="c1">#loop for increasing number of EOFs</span>
+    <span class="nf">while</span><span class="p">((</span><span class="n">rms.prev</span> <span class="o">-</span> <span class="n">rms.now</span> <span class="o">&gt;</span> <span class="n">delta.rms</span><span class="p">)){</span> <span class="c1">#loop for EOF refinement</span>
+      <span class="n">rms.prev</span> <span class="o">&lt;-</span> <span class="n">rms.now</span>
+      <span class="nf">if</span><span class="p">(</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;irlba&quot;</span><span class="p">){</span>
+        <span class="n">SVDi</span> <span class="o">&lt;-</span> <span class="n">irlba</span><span class="o">::</span><span class="nf">irlba</span><span class="p">(</span><span class="n">Xa</span><span class="p">,</span> <span class="n">nu</span><span class="o">=</span><span class="n">n.eof</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="n">n.eof</span><span class="p">)</span>	  
+      <span class="p">}</span>
+      <span class="nf">if</span><span class="p">(</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;svd&quot;</span><span class="p">){</span>
+        <span class="n">SVDi</span> <span class="o">&lt;-</span> <span class="nf">svd</span><span class="p">(</span><span class="n">Xa</span><span class="p">)</span>	  
+      <span class="p">}</span>
+      <span class="nf">if</span><span class="p">(</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;svds&quot;</span><span class="p">){</span>
+        <span class="n">SVDi</span> <span class="o">&lt;-</span> <span class="n">RSpectra</span><span class="o">::</span><span class="nf">svds</span><span class="p">(</span><span class="n">Xa</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">n.eof</span><span class="p">)</span>	  
+      <span class="p">}</span>
+      <span class="n">RECi</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">SVDi</span><span class="o">$</span><span class="n">u</span><span class="p">[,</span><span class="nf">seq</span><span class="p">(</span><span class="n">n.eof</span><span class="p">)])</span> <span class="o">%*%</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="nf">diag</span><span class="p">(</span><span class="n">SVDi</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="nf">seq</span><span class="p">(</span><span class="n">n.eof</span><span class="p">)],</span> <span class="n">n.eof</span><span class="p">,</span> <span class="n">n.eof</span><span class="p">))</span> <span class="o">%*%</span> <span class="nf">t</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">SVDi</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="nf">seq</span><span class="p">(</span><span class="n">n.eof</span><span class="p">)]))</span>
+      <span class="n">Xa</span><span class="p">[</span><span class="n">na.true</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">RECi</span><span class="p">[</span><span class="n">na.true</span><span class="p">]</span><span class="o">*</span><span class="n">speed</span><span class="o">+</span><span class="n">Xa</span><span class="p">[</span><span class="n">na.true</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">speed</span><span class="p">)</span>
+      <span class="nf">if </span><span class="p">(</span><span class="n">replace_ref</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Xa</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">RECi</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span><span class="o">*</span><span class="n">speed</span><span class="o">+</span><span class="n">Xa</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">speed</span><span class="p">)</span>
+      <span class="p">}</span>
+      <span class="n">rms.now</span> <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="nf">c</span><span class="p">((</span><span class="n">RECi</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span> <span class="o">-</span> <span class="n">Xo</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">])</span><span class="o">^</span><span class="m">2</span><span class="p">,</span><span class="n">punish_large_guesses</span><span class="o">*</span><span class="n">RECi</span><span class="p">[</span><span class="n">na.true</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">)))</span>
+      <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n.eof</span><span class="p">,</span> <span class="s">&quot;EOF&quot;</span><span class="p">,</span> <span class="s">&quot;; RMS =&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">rms.now</span><span class="p">,</span> <span class="m">8</span><span class="p">)))</span>
+      <span class="n">RMS</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">RMS</span><span class="p">,</span> <span class="n">rms.now</span><span class="p">)</span>
+      <span class="n">NEOF</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">NEOF</span><span class="p">,</span> <span class="n">n.eof</span><span class="p">)</span>
+      <span class="nf">gc</span><span class="p">()</span>
+      <span class="nf">if</span><span class="p">(</span><span class="n">rms.now</span> <span class="o">==</span> <span class="nf">min</span><span class="p">(</span><span class="n">RMS</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">Xa.best</span> <span class="o">&lt;-</span> <span class="n">Xa</span>
+        <span class="n">n.eof.best</span> <span class="o">&lt;-</span> <span class="n">n.eof</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1"># Add EOF and check for improvement</span>
+    <span class="n">n.eof</span> <span class="o">&lt;-</span> <span class="n">n.eof</span> <span class="o">+</span> <span class="m">1</span>
+    <span class="n">rms.prev</span> <span class="o">&lt;-</span> <span class="n">rms.now</span>
+    <span class="nf">if</span><span class="p">(</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;irlba&quot;</span><span class="p">){</span>
+      <span class="n">SVDi</span> <span class="o">&lt;-</span> <span class="n">irlba</span><span class="o">::</span><span class="nf">irlba</span><span class="p">(</span><span class="n">Xa</span><span class="p">,</span> <span class="n">nu</span><span class="o">=</span><span class="n">n.eof</span><span class="p">,</span> <span class="n">nv</span><span class="o">=</span><span class="n">n.eof</span><span class="p">)</span>	  
+    <span class="p">}</span>
+    <span class="nf">if</span><span class="p">(</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;svd&quot;</span><span class="p">){</span>
+      <span class="n">SVDi</span> <span class="o">&lt;-</span> <span class="nf">svd</span><span class="p">(</span><span class="n">Xa</span><span class="p">)</span>	  
+    <span class="p">}</span>
+    <span class="nf">if</span><span class="p">(</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;svds&quot;</span><span class="p">){</span>
+      <span class="n">SVDi</span> <span class="o">&lt;-</span> <span class="n">RSpectra</span><span class="o">::</span><span class="nf">svds</span><span class="p">(</span><span class="n">Xa</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">n.eof</span><span class="p">)</span>	  
+    <span class="p">}</span>
+    <span class="n">RECi</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">SVDi</span><span class="o">$</span><span class="n">u</span><span class="p">[,</span><span class="nf">seq</span><span class="p">(</span><span class="n">n.eof</span><span class="p">)])</span> <span class="o">%*%</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="nf">diag</span><span class="p">(</span><span class="n">SVDi</span><span class="o">$</span><span class="n">d</span><span class="p">[</span><span class="nf">seq</span><span class="p">(</span><span class="n">n.eof</span><span class="p">)],</span> <span class="n">n.eof</span><span class="p">,</span> <span class="n">n.eof</span><span class="p">))</span> <span class="o">%*%</span> <span class="nf">t</span><span class="p">(</span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">SVDi</span><span class="o">$</span><span class="n">v</span><span class="p">[,</span><span class="nf">seq</span><span class="p">(</span><span class="n">n.eof</span><span class="p">)]))</span>
+    <span class="n">Xa</span><span class="p">[</span><span class="n">na.true</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">RECi</span><span class="p">[</span><span class="n">na.true</span><span class="p">]</span><span class="o">*</span><span class="n">speed</span><span class="o">+</span><span class="n">Xa</span><span class="p">[</span><span class="n">na.true</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">speed</span><span class="p">)</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">replace_ref</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">Xa</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">RECi</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span><span class="o">*</span><span class="n">speed</span><span class="o">+</span><span class="n">Xa</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="m">1</span><span class="o">-</span><span class="n">speed</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">rms.now</span> <span class="o">&lt;-</span> <span class="nf">sqrt</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="nf">c</span><span class="p">((</span><span class="n">RECi</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span> <span class="o">-</span> <span class="n">Xo</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">])</span><span class="o">^</span><span class="m">2</span><span class="p">,</span><span class="n">punish_large_guesses</span><span class="o">*</span><span class="n">RECi</span><span class="p">[</span><span class="n">na.true</span><span class="p">]</span><span class="o">^</span><span class="m">2</span><span class="p">)))</span>
+    <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">n.eof</span><span class="p">,</span> <span class="s">&quot;EOF&quot;</span><span class="p">,</span> <span class="s">&quot;; RMS =&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">rms.now</span><span class="p">,</span> <span class="m">8</span><span class="p">)))</span>
+    <span class="n">RMS</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">RMS</span><span class="p">,</span> <span class="n">rms.now</span><span class="p">)</span>
+    <span class="n">NEOF</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="n">NEOF</span><span class="p">,</span> <span class="n">n.eof</span><span class="p">)</span>
+    <span class="nf">gc</span><span class="p">()</span>
+    <span class="nf">if</span><span class="p">(</span><span class="n">rms.now</span> <span class="o">==</span> <span class="nf">min</span><span class="p">(</span><span class="n">RMS</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">Xa.best</span> <span class="o">&lt;-</span> <span class="n">Xa</span>
+      <span class="n">n.eof.best</span> <span class="o">&lt;-</span> <span class="n">n.eof</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+  <span class="n">Xa</span> <span class="o">&lt;-</span> <span class="n">Xa.best</span>
+  <span class="n">n.eof</span> <span class="o">&lt;-</span> <span class="n">n.eof.best</span>
+  <span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Xa.best&quot;</span><span class="p">,</span> <span class="s">&quot;n.eof.best&quot;</span><span class="p">,</span> <span class="s">&quot;SVDi&quot;</span><span class="p">,</span> <span class="s">&quot;RECi&quot;</span><span class="p">))</span>
+  
+  <span class="n">Xa</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="n">Xo</span><span class="p">[</span><span class="n">ref.pos</span><span class="p">]</span>
+  
+  <span class="n">RESULT</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span>
+    <span class="n">Xa</span><span class="o">=</span><span class="n">Xa</span><span class="p">,</span> <span class="n">n.eof</span><span class="o">=</span><span class="n">n.eof</span><span class="p">,</span> <span class="n">RMS</span><span class="o">=</span><span class="n">RMS</span><span class="p">,</span> <span class="n">NEOF</span><span class="o">=</span><span class="n">NEOF</span><span class="p">,</span> <span class="n">ref.pos</span><span class="o">=</span><span class="n">ref.pos</span>
+  <span class="p">)</span>
+  
+  <span class="n">RESULT</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try the method for our sea level matrix. Say we want 3 EOFs for reconstruction.</p>
+<div style="text-align: right"> <span style="color:red">replace %%%%%%%%%%</span></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">reconstruction</span> <span class="o">=</span> <span class="nf">dineof</span><span class="p">(</span><span class="n">sl_matrix</span><span class="p">,</span> <span class="n">n.max</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;1 EOF ; RMS = 64.85102755&quot;
+[1] &quot;1 EOF ; RMS = 57.62949598&quot;
+[1] &quot;1 EOF ; RMS = 56.65424988&quot;
+[1] &quot;1 EOF ; RMS = 56.58796014&quot;
+[1] &quot;1 EOF ; RMS = 56.6162229&quot;
+[1] &quot;2 EOF ; RMS = 36.53285495&quot;
+[1] &quot;2 EOF ; RMS = 31.80706663&quot;
+[1] &quot;2 EOF ; RMS = 30.73964318&quot;
+[1] &quot;2 EOF ; RMS = 30.53302434&quot;
+[1] &quot;2 EOF ; RMS = 30.52945659&quot;
+[1] &quot;2 EOF ; RMS = 30.56539235&quot;
+[1] &quot;3 EOF ; RMS = 27.92060628&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output gives an estimate for the error of the reconstruction. To get this estimate, 1% of the data have been randomly removed (artificial gaps), and we see how well they could be estimated.</p>
+<p>Please note: This may change depending on the random position of the gaps, also influencing the result.</p>
+<p>Let’s plot the reconstructed matrix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">image</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">stationdata</span><span class="o">$</span><span class="n">year</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="nf">seq_along</span><span class="p">(</span><span class="n">stations</span><span class="p">),</span><span class="n">z</span><span class="o">=</span><span class="n">reconstruction</span><span class="o">$</span><span class="n">Xa</span><span class="p">)</span>
+<span class="nf">axis</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="n">at</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="nf">toupper</span><span class="p">(</span><span class="nf">substr</span><span class="p">(</span><span class="n">stations</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/incomplete_time_series_1_23_0.png" src="../_images/incomplete_time_series_1_23_0.png" />
+</div>
+</div>
+<p>And now we plot the estimated time series with uncertainty estimate:</p>
+<div style="text-align: right"> <span style="color:red">replace %%%%%%%%%%</span></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot reconstruction by first three EOFs in blue</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">year</span><span class="p">,</span><span class="n">reconstruction</span><span class="o">$</span><span class="n">Xa</span><span class="p">[,</span><span class="m">1</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="n">xlim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1940</span><span class="p">,</span><span class="m">1960</span><span class="p">))</span>
+<span class="c1"># plot original data in black</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">year</span><span class="p">,</span><span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">)</span>
+<span class="c1"># get root mean squared error after last iteration</span>
+<span class="n">rms</span> <span class="o">=</span> <span class="n">reconstruction</span><span class="o">$</span><span class="n">RMS</span><span class="p">[</span><span class="nf">length</span><span class="p">(</span><span class="n">reconstruction</span><span class="o">$</span><span class="n">RMS</span><span class="p">)]</span>
+<span class="c1"># get locations of missing values</span>
+<span class="n">missing</span> <span class="o">=</span> <span class="nf">is.na</span><span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="p">)</span>
+<span class="c1"># calculate upper range</span>
+<span class="n">upper_range</span> <span class="o">=</span> <span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="o">*</span><span class="kc">NA</span>
+<span class="n">upper_range</span><span class="p">[</span><span class="n">missing</span><span class="p">]</span><span class="o">=</span><span class="n">reconstruction</span><span class="o">$</span><span class="n">Xa</span><span class="p">[</span><span class="n">missing</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="m">+1.96</span><span class="o">*</span><span class="n">rms</span>
+<span class="c1"># calculate lower range</span>
+<span class="n">lower_range</span> <span class="o">=</span> <span class="n">sldata</span><span class="o">$</span><span class="n">swinoujscie</span><span class="o">*</span><span class="kc">NA</span>
+<span class="n">lower_range</span><span class="p">[</span><span class="n">missing</span><span class="p">]</span><span class="o">=</span><span class="n">reconstruction</span><span class="o">$</span><span class="n">Xa</span><span class="p">[</span><span class="n">missing</span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="m">-1.96</span><span class="o">*</span><span class="n">rms</span>
+<span class="c1"># plot these</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">year</span><span class="p">,</span><span class="n">upper_range</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;lightblue&quot;</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">sldata</span><span class="o">$</span><span class="n">year</span><span class="p">,</span><span class="n">lower_range</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;lightblue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/incomplete_time_series_1_25_0.png" src="../_images/incomplete_time_series_1_25_0.png" />
+</div>
+</div>
+<p>To accurately treat certain and uncertain data together, you might use a method such as that by Stedinger and Tasker</p>
+<p><em>[Stedinger, J.R., Tasker, G.D., 1985. Regional Hydrologic Analysis: 1. Ordinary, Weighted, and Generalized Least Squares Compared. Water Resour. Res. 21, 1421–1432. <a class="reference external" href="https://doi.org/10.1029/WR021i009p01421">https://doi.org/10.1029/WR021i009p01421</a> ]</em></p>
+<p><em>[Stedinger, J.R., Tasker, G.D., 1986. Regional Hydrologic Analysis, 2, Model-Error Estimators, Estimation of Sigma and Log-Pearson Type 3 Distributions. Water Resour. Res. 22, 1487–1499. <a class="reference external" href="https://doi.org/10.1029/WR022i010p01487">https://doi.org/10.1029/WR022i010p01487</a>
+]</em></p>
+<p>which considers both data errors and model errors.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            kernelName: "ir",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Wavelet_lecture.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Introduction to wavelet analysis</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="incomplete_time_series_2.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Analysis of incomplete time series - Part 2</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Florian Börgel<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
