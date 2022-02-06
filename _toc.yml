@@ -1,8 +1,16 @@
-format: jb-article
+format: jb-book
 root: markdown/intro
-sections:
-- file: markdown/content
-  sections:
+parts:
+- caption: Preamble
+  chapters: 
+    - file: markdown/about
+- caption: Statistic lectures
+  chapters:
+  - file: notebooks/lectures_markus/01_lecture
+  - file: notebooks/lectures_markus/02_lecture
+- caption: Exercises
+  numbered: 1
+  chapters:
   - file: notebooks/intro_r_1
   - file: notebooks/intro_r_2
   - file: notebooks/statistical_tests

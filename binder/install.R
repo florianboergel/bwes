@@ -1,12 +1,12 @@
 install.packages("tidyverse")
 install.packages("rmarkdown")
-install.packages("httr")
-install.packages("shinydashboard")
-install.packages('leaflet')
-
-install.packages("reticulate") # python support in RMarkdown
+install.packages("nlme") 
+install.packages("mgcv")
 install.packages("ggplot2") # for plotting
-install.packages(c("rmarkdown", "caTools", "bitops",'IRkernel','IRdisplay')) # for knitting
+install.packages('IRkernel')
+install.packages("RNetCDF")
+install.packages("fields")
+install.packages("WaveletComp")
 
 ### install bioconductor packages
 # install.packages("BiocManager")

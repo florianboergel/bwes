@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture 1: Introduction &#8212; Baltic Earth Winter School</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lecture 2: Probability" href="02_lecture.html" />
+    <link rel="prev" title="about" href="../../markdown/about.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo_baltic_earth.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Baltic Earth Winter School</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../markdown/intro.html">
+   3rd Baltic Earth Winter School
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Preamble
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../markdown/about.html">
+   about
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Statistic lectures
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lecture 1: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_lecture.html">
+   Lecture 2: Probability
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Exercises
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro_r_1.html">
+   1. Introduction into R - Part 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro_r_2.html">
+   2. Introduction into R - Part 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../statistical_tests.html">
+   3. Statistical tests in R
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Wavelet_lecture.html">
+   4. Introduction to wavelet analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../incomplete_time_series_1.html">
+   5. Analysis of incomplete time series - Part 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../incomplete_time_series_2.html">
+   6. Analysis of incomplete time series - Part 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../eof.html">
+   7. EOF analysis example
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bootstrap_acf.html">
+   8. Dice autocorrelation experiment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../likelihood.html">
+   9. Likelihood
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nonparametric_models.html">
+   10. Non-parametric models
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/lectures_markus/01_lecture.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/florianboergel/bwes/main?urlpath=lab/tree/./notebooks/lectures_markus/01_lecture.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-information">
+   General information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-baltic-sea-region">
+   The Baltic Sea region
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#earth-system-science-for-the-baltic-sea-region">
+   Earth System Science for the Baltic Sea region
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#information-about-the-course">
+   Information about the course
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#literature">
+   Literature
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-1-introduction">
+<h1>Lecture 1: Introduction<a class="headerlink" href="#lecture-1-introduction" title="Permalink to this headline">¶</a></h1>
+<p>Teacher: Prof. Dr. Markus Meier</p>
+<p>Leibniz Institute for Baltic Sea Research Warnemünde (IOW)</p>
+<blockquote>
+<div><p><a class="reference external" href="mailto:markus&#46;meier&#37;&#52;&#48;io-warnemuende&#46;de">markus<span>&#46;</span>meier<span>&#64;</span>io-warnemuende<span>&#46;</span>de</a></p>
+</div></blockquote>
+<div class="section" id="general-information">
+<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<p><strong>about the course</strong></p>
+<ol class="simple">
+<li><p>Climate of the Ocean (winter term)</p></li>
+<li><p>Climate of the Baltic Sea Region (summer school in August, on Askö, Sweden)</p></li>
+<li><p>Analysis of Climate Variability (winter school in March, at IOW in Warnemünde), part of the master in physics at Rostock University</p></li>
+</ol>
+<p>• Professor in physical oceanography at the Leibniz
+Institute for Baltic Sea Research Warnemünde (IOW) and Rostock University, master thesis</p>
+<p>Baltic Earth
+<a class="reference external" href="http://www.baltic.earth/">http://www.baltic.earth/</a></p>
+<p><img alt="" src="https://blogs.helmholtz.de/kuestenforschung/wp-content/uploads/sites/25/2021/01/210121_titel_BE-778x345.jpg" /></p>
+<p>Earth System Science for the Baltic Sea basin</p>
+</div>
+<div class="section" id="the-baltic-sea-region">
+<h2>The Baltic Sea region<a class="headerlink" href="#the-baltic-sea-region" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../_images/meier_et_al_2014_catchment.png" /></p>
+<ul class="simple">
+<li><p>Basin: 2.13 Mill. <span class="math notranslate nohighlight">\(km^2\)</span> (20% of
+the European continent)</p></li>
+<li><p>Baltic Sea: 380 000 km2</p></li>
+<li><p>85 million in 14 countries</p></li>
+<li><p>Variable climate and
+topography</p></li>
+<li><p>Considerable seasonal, inter-annual, decadal and long-term variations</p></li>
+<li><p>Unique, challenging region
+for climate and environmental studies (data,
+models and observations, budgets)</p></li>
+<li><p>Environmental issues of concern</p></li>
+</ul>
+</div>
+<div class="section" id="earth-system-science-for-the-baltic-sea-region">
+<h2>Earth System Science for the Baltic Sea region<a class="headerlink" href="#earth-system-science-for-the-baltic-sea-region" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="https://sgp1.digitaloceanspaces.com/cosmosgroup-dc/news/owPuY0hiSHeTqGwW5tiqiLaFp5ExdGVKCsPEA00V.jpeg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Earth system science treat the Earth as an integrated system and seeks a deeper understanding of the physical, chemical, biological and human interactions that determine the past, current and future states of the Earth```</p>
+</div>
+</div>
+<div class="section" id="information-about-the-course">
+<h2>Information about the course<a class="headerlink" href="#information-about-the-course" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Rostock University (master in physics): 3 ECTS (16 lectures á 90 min, tutorials and exercises, 45 minutes examination)</p></li>
+<li><p>ECTS from Rostock University (exercises and exam mandatory)</p></li>
+<li><p>Diploma from Baltic Earth</p></li>
+</ul>
+</div>
+<div class="section" id="literature">
+<h2>Literature<a class="headerlink" href="#literature" title="Permalink to this headline">¶</a></h2>
+<p>Lecture notes: Dietmar Dommenget
+<a class="reference external" href="https://users.monash.edu.au/~dietmard/teaching/honours.statistics/dommenget.statistics.lecture.notes.pdf">https://users.monash.edu.au/~dietmard/teaching/honours.statistics/dommenget.statistics.lecture.notes.pdf</a></p>
+<p>Daniel Wilks: Statistical Methods in the Atmospheric Sciences.
+DOI: 10.1016/B978-0-12-385022-5.00001-4</p>
+<p>Hans von Storch and Francis W. Zwiers: Statistical Analysis in Climate Research. Cambridge University Press</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/lectures_markus"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../../markdown/about.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">about</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="02_lecture.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Lecture 2: Probability</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Leibniz Institute for Baltic Sea Research Warnemünde (IOW), the University of Rostock and the International Baltic Earth Secretariat at the Helmholtz-Zentrum Hereon under the umbrella of Baltic Earth<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

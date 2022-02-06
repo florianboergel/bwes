@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Baltic Earth Winter School
-author: Florian Börgel
+author: Leibniz Institute for Baltic Sea Research Warnemünde (IOW), the University of Rostock and the International Baltic Earth Secretariat at the Helmholtz-Zentrum Hereon under the umbrella of Baltic Earth
 logo: figures/logo_baltic_earth.jpg
 
 # Force re-execution of notebooks on each build.
