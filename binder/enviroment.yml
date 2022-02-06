@@ -6,3 +6,5 @@ dependencies:
   - numpy
   - pandas
   - r-irkernel
+  - r-base
+  - r-WaveletComp
