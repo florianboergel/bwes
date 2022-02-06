@@ -6,7 +6,7 @@ install.packages('leaflet')
 
 install.packages("reticulate") # python support in RMarkdown
 install.packages("ggplot2") # for plotting
-install.packages(c("rmarkdown", "caTools", "bitops")) # for knitting
+install.packages(c("rmarkdown", "caTools", "bitops",'IRkernel','IRdisplay')) # for knitting
 
 ### install bioconductor packages
 # install.packages("BiocManager")
