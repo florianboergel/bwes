@@ -3,6 +3,7 @@ channels:
 
 dependencies:
   - matplotlib
+  - xarray
   - numpy
   - pandas
   - r-irkernel
