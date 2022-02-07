@@ -3,10 +3,12 @@ install.packages("rmarkdown")
 install.packages("nlme") 
 install.packages("mgcv")
 install.packages("ggplot2") # for plotting
-install.packages('IRkernel')
 install.packages("RNetCDF")
 install.packages("fields")
 install.packages("WaveletComp")
+
+install.packages('IRkernel')
+IRkernel::installspec()
 
 ### install bioconductor packages
 # install.packages("BiocManager")
